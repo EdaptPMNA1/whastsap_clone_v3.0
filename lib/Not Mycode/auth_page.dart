@@ -151,7 +151,8 @@ class AuthPage extends StatelessWidget {
                       text: "Next",
                       textSize: 16,
                       press: () {
-                        Navigator.pushNamed(context, RouteNames.mainScreen);
+                        
+                        // Navigator.pushNamed(context, RouteNames.mainScreen);
                       })),
             ],
           ),
