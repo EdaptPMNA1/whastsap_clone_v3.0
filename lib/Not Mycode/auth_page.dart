@@ -96,7 +96,7 @@ class AuthPage extends StatelessWidget {
                       //     // ),
                       //     hintText: " +91",
                       //   ),
-                      // )),
+                      // )),h
                       Expanded(
                           child: SizedBox(
                         width: size.width * 0.7,
