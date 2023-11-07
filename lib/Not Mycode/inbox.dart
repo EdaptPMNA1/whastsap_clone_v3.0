@@ -18,7 +18,7 @@ class Inbox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    final user = KDummyData.participantsChat;
+    final user = KDummyData.participantQsChat;
 
     return WillPopScope(
       onWillPop: () async {

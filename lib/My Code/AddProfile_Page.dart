@@ -1,31 +1,66 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'mainui.dart';
+import 'package:not_whatsapp/Not%20Mycode/routes_name.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class addProfile extends StatefulWidget {
-  const addProfile({Key? key}) : super(key: key);
+// Define the userList globally
+List<FireBaseUserQ> userList = [];
+
+class AddProfile extends StatefulWidget {
+  const AddProfile({Key? key}) : super(key: key);
 
   @override
   _AddProfileState createState() => _AddProfileState();
 }
 
-class _AddProfileState extends State<addProfile> {
+class _AddProfileState extends State<AddProfile> {
   final User? firebaseUser = FirebaseAuth.instance.currentUser;
-  final CollectionReference users = FirebaseFirestore.instance.collection('Users');
+  final CollectionReference users =
+      FirebaseFirestore.instance.collection('Users');
   TextEditingController _userName = TextEditingController();
   TextEditingController _userBio = TextEditingController();
 
+  void getAllUsersQ() async {
+    QuerySnapshot querySnapshot = await users.get();
+    querySnapshot.docs.forEach((doc) {
+      FireBaseUserQ user = FireBaseUserQ(
+          uid: doc['Uuid'],
+          bio: doc['Bio'],
+          name: doc['Name'],
+          phoneNumber: doc['Phno'],
+          avatar: '',
+          messageFrom: 'Someone',
+          lastMessage: '',
+          isImage: false,
+          sent: false,
+          delivered: false,
+          unread: 0,
+          seen: true,
+          date: DateTime.now().toString());
+
+      // Check if the user already exists in the list based on the user id
+      if (!userList.any((element) => element.uid == user.uid)) {
+        setState(() {
+          userList.add(user);
+          print('\n\n\nDetails Saved\n\n\n');
+        });
+      }
+    });
+  }
+
   void addUserDetails(String userName, String userBio) {
     try {
-      users.doc(firebaseUser!.email).set({
-        'name': userName,
+      users.doc(firebaseUser!.uid).set({
+        'Name': userName,
         'Bio': userBio,
         'Uuid': firebaseUser!.uid,
-        'Email': firebaseUser!.email
+        'Phno': firebaseUser!.phoneNumber,
+        // 'Image': Image.asset('images/chat-profile-1.jpeg')
       }).then((_) {
         print('User details added successfully');
-        Navigator.push(context, MaterialPageRoute(builder: (context) => const MainApp()));
+        // Navigator.push(context, MaterialPageRoute(builder: (context) => const MainApp()));
+        Navigator.pushNamed(context, RouteNames.settingsPage);
       }).catchError((error) {
         print('Failed to add user details: $error');
         // Handle the error accordingly
@@ -38,14 +73,6 @@ class _AddProfileState extends State<addProfile> {
       // Handle other exceptions
     }
   }
-
-  //   @override
-  // void initState() {
-  //   super.initState();
-  //   user = FirebaseAuth.instance.currentUser!;
-  //   usernameController.text = user.displayName ?? ''; // Set initial value of the TextField
-  // }
-
 
   @override
   Widget build(BuildContext context) {
@@ -110,7 +137,7 @@ class _AddProfileState extends State<addProfile> {
             ),
             SizedBox(height: 23),
             Text(
-              firebaseUser!.email.toString(),
+              firebaseUser!.phoneNumber.toString(),
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
             ),
             SizedBox(height: 23),
@@ -119,20 +146,19 @@ class _AddProfileState extends State<addProfile> {
                 String userName = _userName.text;
                 String userBio = _userBio.text;
                 try {
-                  FirebaseFirestore.instance
-                      .collection('Users')
-                      .doc(firebaseUser!.email)
-                      .set({
-                    'name': userName,
+                  users.doc(firebaseUser!.uid).set({
+                    'Name': userName,
                     'Bio': userBio,
                     'Uuid': firebaseUser!.uid,
-                    'Email': firebaseUser!.email
+                    'Phno': firebaseUser!.phoneNumber
                   });
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const MainApp()));
+                  Navigator.pushNamed(context, RouteNames.mainScreen);
                 } on Exception catch (e) {
                   print('The Error is : $e');
                 }
+                getAllUsersQ();
+                setLoggedInStatus(true);
+                // users.count();
                 // addUserDetails(userName, userBio);
               },
               child: Text(
@@ -144,4 +170,47 @@ class _AddProfileState extends State<addProfile> {
       ),
     );
   }
+}
+
+class FireBaseUserQ {
+  final String uid;
+  final String bio;
+  final String name;
+  final String phoneNumber;
+  // final AssetImage avatar;
+  // final int id;
+  final String avatar;
+  // final String name;
+  final String messageFrom;
+  final String lastMessage;
+  final bool isImage;
+  final bool sent;
+  final bool delivered;
+  final int unread;
+  final bool seen;
+  final String date;
+
+  FireBaseUserQ({
+    required this.uid,
+    required this.bio,
+    required this.name,
+    required this.phoneNumber,
+    // required this.avatar
+    // required this.id,
+    required this.avatar,
+    // required this.name,
+    required this.messageFrom,
+    required this.lastMessage,
+    required this.isImage,
+    required this.sent,
+    required this.delivered,
+    required this.unread,
+    required this.seen,
+    required this.date,
+  });
+}
+
+void setLoggedInStatus(bool value) async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  await prefs.setBool('isLoggedIn', value);
 }

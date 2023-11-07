@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:not_whatsapp/Not%20Mycode/routes_name.dart';
 import 'Login_Page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:not_whatsapp/main.dart';
@@ -18,26 +19,27 @@ class _SettingpageState extends State<Settingpage> {
   late String _name = ''; // Initialize the name variable
   late String _bio = ''; // Initialize the name variable
   Future<void> fetchData() async {
-  final DocumentSnapshot snapshot = await FirebaseFirestore.instance
-      .collection('Users')
-      .doc(user.email) // Replace with your Uuid
-      .get();
-  if (snapshot.exists) {
-    Map<String, dynamic>? data = snapshot.data() as Map<String, dynamic>?;
-    if (data != null) {
-      setState(() {
-        _name = data['name']; // Set the fetched name
-        _bio = data['Bio'];
-      });
+    final DocumentSnapshot snapshot = await FirebaseFirestore.instance
+        .collection('Users')
+        .doc(user.uid) // Replace with your Uuid
+        .get();
+    if (snapshot.exists) {
+      Map<String, dynamic>? data = snapshot.data() as Map<String, dynamic>?;
+      if (data != null) {
+        setState(() {
+          _name = data['Name']; // Set the fetched name
+          _bio = data['Bio'];
+        });
+      }
     }
   }
-}
 
   @override
   void initState() {
     fetchData();
     super.initState();
   }
+
   User user = FirebaseAuth.instance.currentUser!;
   final CollectionReference users =
       FirebaseFirestore.instance.collection('Users');
@@ -185,10 +187,7 @@ class _SettingpageState extends State<Settingpage> {
               child: Text('Sign Out'),
               onPressed: () {
                 setLoggedInStatus(false);
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const EmailSignInScreen()));
+                Navigator.pushNamed(context, RouteNames.auth);
               },
             ))
           ],

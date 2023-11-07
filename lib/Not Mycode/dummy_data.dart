@@ -1,5 +1,3 @@
-
-
 import 'package:not_whatsapp/Not%20Mycode/call_log_model.dart';
 import 'package:not_whatsapp/Not%20Mycode/channel_news_model.dart';
 import 'package:not_whatsapp/Not%20Mycode/chats_model.dart';
@@ -7,8 +5,8 @@ import 'package:not_whatsapp/Not%20Mycode/k_images.dart';
 import 'package:not_whatsapp/Not%20Mycode/participants_chat_model.dart';
 
 class KDummyData {
-  static List<Participant> chatsList = [
-    Participant(
+  static List<ParticipantQ> chatsList = [
+    ParticipantQ(
         id: 1,
         avatar: KImages.chatAvatar1,
         name: "Martin Troff",
@@ -20,7 +18,7 @@ class KDummyData {
         unread: 7,
         sent: true,
         date: DateTime.now().toString()),
-    Participant(
+    ParticipantQ(
         id: 2,
         avatar: KImages.chatAvatar2,
         name: "Yes that's correct",
@@ -32,7 +30,7 @@ class KDummyData {
         sent: true,
         unread: 0,
         date: DateTime.now().toString()),
-    Participant(
+    ParticipantQ(
         id: 3,
         avatar: KImages.chatAvatar3,
         name: "Carla Korsgaard",
@@ -44,7 +42,7 @@ class KDummyData {
         unread: 0,
         date: DateTime.now().toString(),
         isImage: false),
-    Participant(
+    ParticipantQ(
         id: 4,
         avatar: KImages.chatAvatar4,
         name: "Zaire Passaquindici",
@@ -56,7 +54,7 @@ class KDummyData {
         unread: 3,
         date: DateTime.now().toString(),
         isImage: false),
-    Participant(
+    ParticipantQ(
         id: 5,
         avatar: KImages.chatAvatar5,
         name: "Terry Dokidis",
@@ -68,7 +66,7 @@ class KDummyData {
         unread: 0,
         date: DateTime.now().toString(),
         isImage: false),
-    Participant(
+    ParticipantQ(
         id: 6,
         avatar: KImages.chatAvatar6,
         name: "Philip Westervelt",
@@ -80,7 +78,7 @@ class KDummyData {
         unread: 0,
         date: DateTime.now().toString(),
         isImage: false),
-    Participant(
+    ParticipantQ(
         id: 7,
         avatar: KImages.chatAvatar7,
         name: "Alfanso Rhifel",
@@ -109,7 +107,7 @@ class KDummyData {
     }
   ];
 
-  static ParticipantsChat participantsChat = ParticipantsChat(
+  static ParticipantsChat participantQsChat = ParticipantsChat(
       id: 1,
       participant: "Martin Luther",
       avatar: KImages.chatAvatar1,
@@ -119,7 +117,7 @@ class KDummyData {
         Messages(
           id: 1,
           message: "Hi",
-          sender: "participant",
+          sender: "participantQ",
           date: DateTime.now(),
           seen: true,
           delivered: true,
@@ -146,7 +144,7 @@ class KDummyData {
         Messages(
           id: 4,
           message: "I'm absolutely fine, what about you?",
-          sender: "participant",
+          sender: "participantQ",
           date: DateTime.now(),
           seen: true,
           delivered: true,
@@ -164,7 +162,7 @@ class KDummyData {
         Messages(
           id: 6,
           message: "Have you done your assignments?",
-          sender: "participant",
+          sender: "participantQ",
           date: DateTime.now(),
           seen: true,
           delivered: true,

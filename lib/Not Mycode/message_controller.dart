@@ -14,7 +14,7 @@ class MessageController {
   static Stream<List<Messages>> get streamData => streamController.stream;
   static List<Messages> list = [];
   static init() {
-    list = KDummyData.participantsChat.messages;
+    list = KDummyData.participantQsChat.messages;
     streamSink.add(list);
   }
 

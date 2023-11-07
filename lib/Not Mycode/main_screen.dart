@@ -82,6 +82,9 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
                     ),
                     PopupMenuItem(
                       child: Text("Settins"),
+                      onTap: () {
+                        Navigator.pushNamed(context, RouteNames.settingsPage);
+                      },
                     ),
                   ];
                 })
@@ -124,7 +127,7 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
                           backgroundColor: Colors.white,
                           radius: 12,
                           child: Text(
-                            "6",
+                            "4",
                             style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.bold,

@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
-class Participant {
+class ParticipantQ {
   final int id;
   final String avatar;
   final String name;
@@ -12,9 +12,9 @@ class Participant {
   final bool delivered;
   final int unread;
   final bool seen;
-
   final String date;
-  Participant({
+  
+  ParticipantQ({
     required this.id,
     required this.avatar,
     required this.name,
@@ -28,7 +28,7 @@ class Participant {
     required this.date,
   });
 
-  Participant copyWith({
+  ParticipantQ copyWith({
     int? id,
     String? avatar,
     String? name,
@@ -41,7 +41,7 @@ class Participant {
     bool? seen,
     String? date,
   }) {
-    return Participant(
+    return ParticipantQ(
       id: id ?? this.id,
       avatar: avatar ?? this.avatar,
       name: name ?? this.name,
@@ -72,8 +72,8 @@ class Participant {
     };
   }
 
-  factory Participant.fromMap(Map<String, dynamic> map) {
-    return Participant(
+  factory ParticipantQ.fromMap(Map<String, dynamic> map) {
+    return ParticipantQ(
       id: map['id'] as int,
       avatar: map['avatar'] as String,
       name: map['name'] as String,
@@ -90,16 +90,16 @@ class Participant {
 
   String toJson() => json.encode(toMap());
 
-  factory Participant.fromJson(String source) =>
-      Participant.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory ParticipantQ.fromJson(String source) =>
+      ParticipantQ.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
   String toString() {
-    return 'Participant(id: $id, avatar: $avatar, name: $name, messageFrom: $messageFrom, lastMessage: $lastMessage, isImage: $isImage, sent: $sent, delivered: $delivered, unread: $unread, seen: $seen, date: $date)';
+    return 'ParticipantQ(id: $id, avatar: $avatar, name: $name, messageFrom: $messageFrom, lastMessage: $lastMessage, isImage: $isImage, sent: $sent, delivered: $delivered, unread: $unread, seen: $seen, date: $date)';
   }
 
   @override
-  bool operator ==(covariant Participant other) {
+  bool operator ==(covariant ParticipantQ other) {
     if (identical(this, other)) return true;
 
     return other.id == id &&

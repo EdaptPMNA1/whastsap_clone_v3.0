@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:not_whatsapp/My%20Code/AddProfile_Page.dart';
 import 'package:not_whatsapp/Not%20Mycode/chats_model.dart';
 import 'package:not_whatsapp/Not%20Mycode/constants.dart';
 import 'package:not_whatsapp/Not%20Mycode/routes_name.dart';
@@ -9,10 +10,11 @@ import 'package:intl/intl.dart';
 class ParticipateTile extends StatelessWidget {
   const ParticipateTile({
     super.key,
-    required this.element,
+    required this.player,
   });
 
-  final Participant element;
+  // final ParticipantQ player;
+  final FireBaseUserQ player;
 
   @override
   Widget build(BuildContext context) {
@@ -26,10 +28,10 @@ class ParticipateTile extends StatelessWidget {
       leading: CircleAvatar(
         radius: 35,
         backgroundColor: primaryColor,
-        backgroundImage: AssetImage(element.avatar),
+        // backgroundImage: AssetImage(player.avatar),
       ),
       title: Text(
-        element.name,
+        player.name,
         style: TextStyle(
           fontWeight: FontWeight.bold,
           fontSize: 16.sp,
@@ -39,17 +41,17 @@ class ParticipateTile extends StatelessWidget {
       subtitle: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          if (element.messageFrom == "user") ...[
-            element.seen
+          if (player.messageFrom == "user") ...[
+            player.seen
                 ? Icon(Icons.done_all_rounded, color: Colors.blue, size: 20.w)
-                : element.delivered
+                : player.delivered
                     ? Icon(Icons.done_all_rounded, size: 20.w)
                     : Icon(Icons.check, size: 20.w),
             Utils.horizontalSpace(3),
           ],
           Expanded(
             child: Text(
-              element.lastMessage,
+              player.lastMessage,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               style: TextStyle(
@@ -65,19 +67,19 @@ class ParticipateTile extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            DateFormat.jm().format(DateTime.parse(element.date)),
+            DateFormat.jm().format(DateTime.parse(player.date)),
             style: TextStyle(
               fontWeight: FontWeight.w500,
               fontSize: 12.sp,
-              color: element.unread != 0 ? primaryColor : subTitleTextColor,
+              color: player.unread != 0 ? primaryColor : subTitleTextColor,
             ),
           ),
-          if (element.unread != 0)
+          if (player.unread != 0)
             CircleAvatar(
               radius: 12,
               backgroundColor: primaryColor,
               child: Text(
-                element.unread.toString(),
+                player.unread.toString(),
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 11.sp,

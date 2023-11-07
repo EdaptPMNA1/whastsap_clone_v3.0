@@ -95,7 +95,7 @@ class _AuthPageState extends State<AuthPage> {
         otp = '';
       });
       // Navigate to the next screen upon successful sign-in
-      Navigator.pushNamed(context, RouteNames.mainScreen);
+      Navigator.pushNamed(context, RouteNames.addProfile);
       print("User signed in: ${userCredential.user?.uid}");
     } catch (e) {
       print("Failed to sign in: $e");
