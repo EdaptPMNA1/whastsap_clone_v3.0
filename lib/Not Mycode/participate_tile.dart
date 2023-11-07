@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:not_whatsapp/My%20Code/AddProfile_Page.dart';
-import 'package:not_whatsapp/Not%20Mycode/chats_model.dart';
+// import 'package:not_whatsapp/Not%20Mycode/chats_model.dart';
 import 'package:not_whatsapp/Not%20Mycode/constants.dart';
 import 'package:not_whatsapp/Not%20Mycode/routes_name.dart';
 import 'package:not_whatsapp/Not%20Mycode/utils.dart';

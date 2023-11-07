@@ -7,7 +7,7 @@ import 'package:not_whatsapp/Not%20Mycode/size_extension.dart';
 import 'package:not_whatsapp/Not%20Mycode/utils.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'strings.dart';
-import 'package:firebase_core/firebase_core.dart';
+// import 'package:firebase_core/firebase_core.dart';
 
 class AuthPage extends StatefulWidget {
   // const AuthPage({super.key});

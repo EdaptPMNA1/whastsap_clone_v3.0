@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:not_whatsapp/My%20Code/AddProfile_Page.dart';
 import 'package:not_whatsapp/Not%20Mycode/constants.dart';
-import 'package:not_whatsapp/Not%20Mycode/dummy_data.dart';
+// import 'package:not_whatsapp/Not%20Mycode/dummy_data.dart';
 import 'package:not_whatsapp/Not%20Mycode/participate_tile.dart';
 import 'package:not_whatsapp/Not%20Mycode/utils.dart';
 
