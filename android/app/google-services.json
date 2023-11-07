@@ -8,12 +8,64 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:984079065874:android:6b308d7deae912e22e09cb",
+        "mobilesdk_app_id": "1:984079065874:android:50f94e43d075235a2e09cb",
         "android_client_info": {
           "package_name": "com.example.not_whatsapp"
         }
       },
       "oauth_client": [
+        {
+          "client_id": "984079065874-qbigrdhvp4ju21itovmj60j0g41p6k1s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.not_whatsapp",
+            "certificate_hash": "9a9730988f46deaee12ddee7ed65c4beb5da69ec"
+          }
+        },
+        {
+          "client_id": "984079065874-ldsaahn5gj9b5snt0t95m7167amku1es.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAW2d0O6Q7VkY5P2WEAabUMOVN44TrBJtE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "984079065874-ldsaahn5gj9b5snt0t95m7167amku1es.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "984079065874-5q645rco7cdva64qkcr0g5vr92q6smnp.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.notWhatsapp"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:984079065874:android:50f94e43d075235a2e09cb",
+        "android_client_info": {
+          "package_name": "com.example.whatsapp_clone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "984079065874-cl2u1f3k770jvqe0mfnvubu0hmvs8njo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.whatsapp_clone",
+            "certificate_hash": "9a9730988f46deaee12ddee7ed65c4beb5da69ec"
+          }
+        },
         {
           "client_id": "984079065874-ldsaahn5gj9b5snt0t95m7167amku1es.apps.googleusercontent.com",
           "client_type": 3

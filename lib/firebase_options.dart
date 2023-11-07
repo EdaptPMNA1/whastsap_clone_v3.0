@@ -70,6 +70,7 @@ class DefaultFirebaseOptions {
     projectId: 'notwhatsapp-1915f',
     databaseURL: 'https://notwhatsapp-1915f-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'notwhatsapp-1915f.appspot.com',
+    androidClientId: '984079065874-cl2u1f3k770jvqe0mfnvubu0hmvs8njo.apps.googleusercontent.com',
     iosClientId: '984079065874-5q645rco7cdva64qkcr0g5vr92q6smnp.apps.googleusercontent.com',
     iosBundleId: 'com.example.notWhatsapp',
   );
@@ -81,6 +82,7 @@ class DefaultFirebaseOptions {
     projectId: 'notwhatsapp-1915f',
     databaseURL: 'https://notwhatsapp-1915f-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'notwhatsapp-1915f.appspot.com',
+    androidClientId: '984079065874-cl2u1f3k770jvqe0mfnvubu0hmvs8njo.apps.googleusercontent.com',
     iosClientId: '984079065874-dqo0cve5et7hpdag2uuuubomurumjmm2.apps.googleusercontent.com',
     iosBundleId: 'com.example.notWhatsapp.RunnerTests',
   );
