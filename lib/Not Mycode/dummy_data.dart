@@ -107,7 +107,7 @@ class KDummyData {
     }
   ];
 
-  static ParticipantsChat participantQsChat = ParticipantsChat(
+  static ParticipantQsChat participantQsChat = ParticipantQsChat(
       id: 1,
       participant: "Martin Luther",
       avatar: KImages.chatAvatar1,

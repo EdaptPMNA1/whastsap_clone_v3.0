@@ -11,7 +11,7 @@ class AvatarAndBackNavigate extends StatelessWidget {
     required this.user,
   });
 
-  final ParticipantsChat user;
+  final ParticipantQsChat user;
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +37,7 @@ class UserAndStatus extends StatelessWidget {
     required this.user,
   });
 
-  final ParticipantsChat user;
+  final ParticipantQsChat user;
 
   @override
   Widget build(BuildContext context) {

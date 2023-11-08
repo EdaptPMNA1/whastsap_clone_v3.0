@@ -76,7 +76,7 @@ class Inbox extends StatelessWidget {
     );
   }
 
-  AppBar _buildAppBar(ParticipantsChat user) {
+  AppBar _buildAppBar(ParticipantQsChat user) {
     return AppBar(
       backgroundColor: primaryColor,
       leadingWidth: 70.w,

@@ -3,14 +3,14 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 
-class ParticipantsChat {
+class ParticipantQsChat {
   final int id;
   final String participant;
   final String avatar;
   final String status;
   final String contact;
   final List<Messages> messages;
-  ParticipantsChat({
+  ParticipantQsChat({
     required this.id,
     required this.participant,
     required this.avatar,
@@ -19,7 +19,7 @@ class ParticipantsChat {
     required this.messages,
   });
 
-  ParticipantsChat copyWith({
+  ParticipantQsChat copyWith({
     int? id,
     String? participant,
     String? avatar,
@@ -27,7 +27,7 @@ class ParticipantsChat {
     String? contact,
     List<Messages>? messages,
   }) {
-    return ParticipantsChat(
+    return ParticipantQsChat(
       id: id ?? this.id,
       participant: participant ?? this.participant,
       avatar: avatar ?? this.avatar,
@@ -48,8 +48,8 @@ class ParticipantsChat {
     };
   }
 
-  factory ParticipantsChat.fromMap(Map<String, dynamic> map) {
-    return ParticipantsChat(
+  factory ParticipantQsChat.fromMap(Map<String, dynamic> map) {
+    return ParticipantQsChat(
       id: map['id'] as int,
       participant: map['participant'] as String,
       avatar: map['avatar'] as String,
@@ -65,16 +65,16 @@ class ParticipantsChat {
 
   String toJson() => json.encode(toMap());
 
-  factory ParticipantsChat.fromJson(String source) =>
-      ParticipantsChat.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory ParticipantQsChat.fromJson(String source) =>
+      ParticipantQsChat.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
   String toString() {
-    return 'ParticipantsChat(id: $id, participant: $participant, avatar: $avatar, status: $status, contact: $contact, messages: $messages)';
+    return 'ParticipantQsChat(id: $id, participant: $participant, avatar: $avatar, status: $status, contact: $contact, messages: $messages)';
   }
 
   @override
-  bool operator ==(covariant ParticipantsChat other) {
+  bool operator ==(covariant ParticipantQsChat other) {
     if (identical(this, other)) return true;
 
     return other.id == id &&

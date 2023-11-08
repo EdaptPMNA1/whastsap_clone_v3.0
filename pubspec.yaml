@@ -28,6 +28,7 @@ dependencies:
   google_fonts: ^6.1.0
   firebase_auth: ^4.12.1
   firebase_core: ^2.21.0
+  firebase_database: ^10.3.3
   
     # overlay_support: latest_version
 
