@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:not_whatsapp/My%20Code/AddProfile_Page.dart';
 import 'package:not_whatsapp/Not%20Mycode/community_page.dart';
 import 'package:not_whatsapp/Not%20Mycode/participants_list.dart';
 import 'package:not_whatsapp/Not%20Mycode/updates_page.dart';
@@ -127,7 +128,7 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
                           backgroundColor: Colors.white,
                           radius: 12,
                           child: Text(
-                            "4",
+                            userList.length.toString(),
                             style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.bold,
