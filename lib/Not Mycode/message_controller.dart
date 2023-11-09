@@ -22,7 +22,7 @@ class MessageController {
     list.insert(
       0,
       Messages(
-          id: 10,
+          uid: 10,
           message: message,
           sender: "user",
           date: DateTime.now(),
