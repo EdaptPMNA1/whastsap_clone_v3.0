@@ -32,7 +32,7 @@ class RouteNames {
             settings: settings, builder: (_) => const MainScreen());
       case RouteNames.inbox:
         return MaterialPageRoute(
-            settings: settings, builder: (_) => const Inbox());
+            settings: settings, builder: (_) => const Inbox(uid: '',));
       case RouteNames.storyPage:
         return MaterialPageRoute(
             settings: settings, builder: (_) => MyStoryPage());

@@ -7,6 +7,14 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 // Define the userList globally
 List<FireBaseUserQ> userList = [];
 
+// Map<int, FireBaseUserQ> myMap = {};
+// Map<int, FireBaseUserQ> myMap = { for (var k in userList.asMap().keys) k : userList[k] };
+Map<int, FireBaseUserQ> userDetails = Map.fromIterable(
+  userList.asMap().keys,
+  key: (k) => k,
+  value: (k) => userList[k],
+);
+
 class AddProfile extends StatefulWidget {
   const AddProfile({Key? key}) : super(key: key);
 

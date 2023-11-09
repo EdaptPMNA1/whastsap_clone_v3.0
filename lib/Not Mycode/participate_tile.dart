@@ -13,7 +13,7 @@ class ParticipateTile extends StatelessWidget {
     required this.player,
   });
 
-  // final ParticipantQ player;
+
   final FireBaseUserQ player;
 
   @override

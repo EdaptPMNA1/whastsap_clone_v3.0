@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -16,18 +15,26 @@ import 'package:not_whatsapp/Not%20Mycode/utils.dart';
 import 'package:grouped_list/grouped_list.dart';
 
 class Inbox extends StatefulWidget {
-  const Inbox({super.key});
+  const Inbox({Key? key, required this.uid}) : super(key: key);
+  
+  final String uid;
 
   @override
   State<Inbox> createState() => _InboxState();
 }
 
 class _InboxState extends State<Inbox> {
+  late ParticipantQsChat selectedUser = KDummyData.participantQsChat;
+
+  void _selectUser(ParticipantQsChat user) {
+    setState(() {
+      selectedUser = user;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    // final user = KDummyData.participantQsChat;
-    final user = ;
 
     return WillPopScope(
       onWillPop: () async {
@@ -35,7 +42,7 @@ class _InboxState extends State<Inbox> {
         return true;
       },
       child: Scaffold(
-        appBar: _buildAppBar(user),
+        appBar: _buildAppBar(selectedUser),
         body: Container(
           height: size.height,
           width: size.width,
@@ -51,7 +58,6 @@ class _InboxState extends State<Inbox> {
                         return GroupedListView<Messages, DateTime>(
                           padding: const EdgeInsets.all(0),
                           elements: messageList,
-                          // controller: controller,
                           groupBy: (element) => DateTime(
                             element.date.year,
                             element.date.month,
@@ -65,12 +71,9 @@ class _InboxState extends State<Inbox> {
 
                           itemComparator: (item1, item2) =>
                               item1.date.compareTo(item2.date),
-                          // optional
                           useStickyGroupSeparators: false,
-                          // optional
                           floatingHeader: true,
-                          // optional
-                          order: GroupedListOrder.ASC, // optional
+                          order: GroupedListOrder.ASC,
                         );
                       }
                       return const SizedBox();
@@ -114,38 +117,3 @@ class _InboxState extends State<Inbox> {
     );
   }
 }
-
-
-// Future<void> _sentMessage() async {
-//   QuerySnapshot querySnapshot = await users.get();
-//     querySnapshot.docs.forEach((doc) {
-//       ParticipantQsChat user = ParticipantQsChat(
-//           uid: doc['Uuid'],
-//           bio: doc['Bio'],
-//           name: doc['Name'],
-//           phoneNumber: doc['Phno'],
-//           avatar: '',
-//           messages:,
-//           messageFrom: 'Someone',
-//           lastMessage: '',
-//           isImage: false,
-//           sent: false,
-//           delivered: false,
-//           unread: 0,
-//           seen: true,
-//           date: DateTime.now().toString());
-
-//       // Check if the user already exists in the list based on the user id
-//       if (!userList.any((element) => element.uid == user.uid)) {
-//         setState(() {
-//           userList.add(user);
-//           print('\n\n\nDetails Saved\n\n\n');
-//         });
-//       }
-//     });
-// }
-
-
-var userDetails = userList.forEach((element) {
-  
-});
