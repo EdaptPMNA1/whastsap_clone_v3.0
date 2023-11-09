@@ -4,14 +4,14 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 
 class ParticipantQsChat {
-  final int id;
+  final int uid;
   final String participant;
   final String avatar;
   final String status;
   final String contact;
   final List<Messages> messages;
   ParticipantQsChat({
-    required this.id,
+    required this.uid,
     required this.participant,
     required this.avatar,
     required this.status,
@@ -20,7 +20,7 @@ class ParticipantQsChat {
   });
 
   ParticipantQsChat copyWith({
-    int? id,
+    int? uid,
     String? participant,
     String? avatar,
     String? status,
@@ -28,7 +28,7 @@ class ParticipantQsChat {
     List<Messages>? messages,
   }) {
     return ParticipantQsChat(
-      id: id ?? this.id,
+      uid: uid ?? this.uid,
       participant: participant ?? this.participant,
       avatar: avatar ?? this.avatar,
       status: status ?? this.status,
@@ -39,7 +39,7 @@ class ParticipantQsChat {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
+      'uid': uid,
       'participant': participant,
       'avatar': avatar,
       'status': status,
@@ -50,7 +50,7 @@ class ParticipantQsChat {
 
   factory ParticipantQsChat.fromMap(Map<String, dynamic> map) {
     return ParticipantQsChat(
-      id: map['id'] as int,
+      uid: map['uid'] as int,
       participant: map['participant'] as String,
       avatar: map['avatar'] as String,
       status: map['status'] as String,
@@ -70,14 +70,14 @@ class ParticipantQsChat {
 
   @override
   String toString() {
-    return 'ParticipantQsChat(id: $id, participant: $participant, avatar: $avatar, status: $status, contact: $contact, messages: $messages)';
+    return 'ParticipantQsChat(uid: $uid, participant: $participant, avatar: $avatar, status: $status, contact: $contact, messages: $messages)';
   }
 
   @override
   bool operator ==(covariant ParticipantQsChat other) {
     if (identical(this, other)) return true;
 
-    return other.id == id &&
+    return other.uid == uid &&
         other.participant == participant &&
         other.avatar == avatar &&
         other.status == status &&
@@ -87,7 +87,7 @@ class ParticipantQsChat {
 
   @override
   int get hashCode {
-    return id.hashCode ^
+    return uid.hashCode ^
         participant.hashCode ^
         avatar.hashCode ^
         status.hashCode ^
@@ -97,7 +97,7 @@ class ParticipantQsChat {
 }
 
 class Messages {
-  final int id;
+  final int uid;
   final String message;
   final String sender;
   final DateTime date;
@@ -105,9 +105,9 @@ class Messages {
   final bool delivered;
   final bool sent;
   final String? image;
-  final String? video;
+  final String? vuideo;
   Messages({
-    required this.id,
+    required this.uid,
     required this.message,
     required this.sender,
     required this.date,
@@ -115,11 +115,11 @@ class Messages {
     required this.delivered,
     required this.sent,
     this.image,
-    this.video,
+    this.vuideo,
   });
 
   Messages copyWith({
-    int? id,
+    int? uid,
     String? message,
     String? sender,
     DateTime? date,
@@ -127,10 +127,10 @@ class Messages {
     bool? delivered,
     bool? sent,
     String? image,
-    String? video,
+    String? vuideo,
   }) {
     return Messages(
-      id: id ?? this.id,
+      uid: uid ?? this.uid,
       message: message ?? this.message,
       sender: sender ?? this.sender,
       date: date ?? this.date,
@@ -138,13 +138,13 @@ class Messages {
       delivered: delivered ?? this.delivered,
       sent: sent ?? this.sent,
       image: image ?? this.image,
-      video: video ?? this.video,
+      vuideo: vuideo ?? this.vuideo,
     );
   }
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
+      'uid': uid,
       'message': message,
       'sender': sender,
       'date': date.millisecondsSinceEpoch,
@@ -152,13 +152,13 @@ class Messages {
       'delivered': delivered,
       'sent': sent,
       'image': image,
-      'video': video,
+      'vuideo': vuideo,
     };
   }
 
   factory Messages.fromMap(Map<String, dynamic> map) {
     return Messages(
-      id: map['id'] as int,
+      uid: map['uid'] as int,
       message: map['message'] as String,
       sender: map['sender'] as String,
       date: DateTime.fromMillisecondsSinceEpoch(map['date'] as int),
@@ -166,7 +166,7 @@ class Messages {
       delivered: map['delivered'] as bool,
       sent: map['sent'] as bool,
       image: map['image'] != null ? map['image'] as String : null,
-      video: map['video'] != null ? map['video'] as String : null,
+      vuideo: map['vuideo'] != null ? map['vuideo'] as String : null,
     );
   }
 
@@ -177,14 +177,14 @@ class Messages {
 
   @override
   String toString() {
-    return 'Messags(id: $id, message: $message, sender: $sender, date: $date, seen: $seen, delivered: $delivered, sent: $sent, image: $image, video: $video)';
+    return 'Messags(uid: $uid, message: $message, sender: $sender, date: $date, seen: $seen, delivered: $delivered, sent: $sent, image: $image, vuideo: $vuideo)';
   }
 
   @override
   bool operator ==(covariant Messages other) {
     if (identical(this, other)) return true;
 
-    return other.id == id &&
+    return other.uid == uid &&
         other.message == message &&
         other.sender == sender &&
         other.date == date &&
@@ -192,12 +192,12 @@ class Messages {
         other.delivered == delivered &&
         other.sent == sent &&
         other.image == image &&
-        other.video == video;
+        other.vuideo == vuideo;
   }
 
   @override
   int get hashCode {
-    return id.hashCode ^
+    return uid.hashCode ^
         message.hashCode ^
         sender.hashCode ^
         date.hashCode ^
@@ -205,6 +205,6 @@ class Messages {
         delivered.hashCode ^
         sent.hashCode ^
         image.hashCode ^
-        video.hashCode;
+        vuideo.hashCode;
   }
 }

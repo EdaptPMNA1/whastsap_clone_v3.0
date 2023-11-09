@@ -2,7 +2,7 @@
 import 'dart:convert';
 
 class ParticipantQ {
-  final int id;
+  final int uid;
   final String avatar;
   final String name;
   final String messageFrom;
@@ -15,7 +15,7 @@ class ParticipantQ {
   final String date;
   
   ParticipantQ({
-    required this.id,
+    required this.uid,
     required this.avatar,
     required this.name,
     required this.messageFrom,
@@ -29,7 +29,7 @@ class ParticipantQ {
   });
 
   ParticipantQ copyWith({
-    int? id,
+    int? uid,
     String? avatar,
     String? name,
     String? messageFrom,
@@ -42,7 +42,7 @@ class ParticipantQ {
     String? date,
   }) {
     return ParticipantQ(
-      id: id ?? this.id,
+      uid: uid ?? this.uid,
       avatar: avatar ?? this.avatar,
       name: name ?? this.name,
       messageFrom: messageFrom ?? this.messageFrom,
@@ -58,7 +58,7 @@ class ParticipantQ {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
+      'uid': uid,
       'avatar': avatar,
       'name': name,
       'messageFrom': messageFrom,
@@ -74,7 +74,7 @@ class ParticipantQ {
 
   factory ParticipantQ.fromMap(Map<String, dynamic> map) {
     return ParticipantQ(
-      id: map['id'] as int,
+      uid: map['uid'] as int,
       avatar: map['avatar'] as String,
       name: map['name'] as String,
       messageFrom: map['messageFrom'] as String,
@@ -95,14 +95,14 @@ class ParticipantQ {
 
   @override
   String toString() {
-    return 'ParticipantQ(id: $id, avatar: $avatar, name: $name, messageFrom: $messageFrom, lastMessage: $lastMessage, isImage: $isImage, sent: $sent, delivered: $delivered, unread: $unread, seen: $seen, date: $date)';
+    return 'ParticipantQ(uid: $uid, avatar: $avatar, name: $name, messageFrom: $messageFrom, lastMessage: $lastMessage, isImage: $isImage, sent: $sent, delivered: $delivered, unread: $unread, seen: $seen, date: $date)';
   }
 
   @override
   bool operator ==(covariant ParticipantQ other) {
     if (identical(this, other)) return true;
 
-    return other.id == id &&
+    return other.uid == uid &&
         other.avatar == avatar &&
         other.name == name &&
         other.messageFrom == messageFrom &&
@@ -117,7 +117,7 @@ class ParticipantQ {
 
   @override
   int get hashCode {
-    return id.hashCode ^
+    return uid.hashCode ^
         avatar.hashCode ^
         name.hashCode ^
         messageFrom.hashCode ^

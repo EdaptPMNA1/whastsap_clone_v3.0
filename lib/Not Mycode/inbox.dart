@@ -1,6 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:not_whatsapp/My%20Code/AddProfile_Page.dart';
 import 'package:not_whatsapp/Not%20Mycode/appbar_component.dart';
 import 'package:not_whatsapp/Not%20Mycode/constants.dart';
 import 'package:not_whatsapp/Not%20Mycode/dummy_data.dart';
@@ -12,9 +14,14 @@ import 'package:not_whatsapp/Not%20Mycode/message_item.dart';
 import 'package:not_whatsapp/Not%20Mycode/participants_chat_model.dart';
 import 'package:not_whatsapp/Not%20Mycode/utils.dart';
 import 'package:grouped_list/grouped_list.dart';
-class Inbox extends StatelessWidget {
+class Inbox extends StatefulWidget {
   const Inbox({super.key});
 
+  @override
+  State<Inbox> createState() => _InboxState();
+}
+
+class _InboxState extends State<Inbox> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -105,3 +112,33 @@ class Inbox extends StatelessWidget {
     );
   }
 }
+
+
+// Future<void> _sentMessage() async {
+//   QuerySnapshot querySnapshot = await users.get();
+//     querySnapshot.docs.forEach((doc) {
+//       ParticipantQsChat user = ParticipantQsChat(
+//           uid: doc['Uuid'],
+//           bio: doc['Bio'],
+//           name: doc['Name'],
+//           phoneNumber: doc['Phno'],
+//           avatar: '',
+//           messages:,
+//           messageFrom: 'Someone',
+//           lastMessage: '',
+//           isImage: false,
+//           sent: false,
+//           delivered: false,
+//           unread: 0,
+//           seen: true,
+//           date: DateTime.now().toString());
+
+//       // Check if the user already exists in the list based on the user id
+//       if (!userList.any((element) => element.uid == user.uid)) {
+//         setState(() {
+//           userList.add(user);
+//           print('\n\n\nDetails Saved\n\n\n');
+//         });
+//       }
+//     });
+// }

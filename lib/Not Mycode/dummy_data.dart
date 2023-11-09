@@ -7,7 +7,7 @@ import 'package:not_whatsapp/Not%20Mycode/participants_chat_model.dart';
 class KDummyData {
   static List<ParticipantQ> chatsList = [
     ParticipantQ(
-        id: 1,
+        uid: 1,
         avatar: KImages.chatAvatar1,
         name: "Martin Troff",
         lastMessage: "Let's meet",
@@ -19,7 +19,7 @@ class KDummyData {
         sent: true,
         date: DateTime.now().toString()),
     ParticipantQ(
-        id: 2,
+        uid: 2,
         avatar: KImages.chatAvatar2,
         name: "Yes that's correct",
         lastMessage: "Let's meet",
@@ -31,7 +31,7 @@ class KDummyData {
         unread: 0,
         date: DateTime.now().toString()),
     ParticipantQ(
-        id: 3,
+        uid: 3,
         avatar: KImages.chatAvatar3,
         name: "Carla Korsgaard",
         lastMessage: "How are you today?",
@@ -43,7 +43,7 @@ class KDummyData {
         date: DateTime.now().toString(),
         isImage: false),
     ParticipantQ(
-        id: 4,
+        uid: 4,
         avatar: KImages.chatAvatar4,
         name: "Zaire Passaquindici",
         lastMessage: "Sorry, I couldn't attend your party",
@@ -55,9 +55,9 @@ class KDummyData {
         date: DateTime.now().toString(),
         isImage: false),
     ParticipantQ(
-        id: 5,
+        uid: 5,
         avatar: KImages.chatAvatar5,
-        name: "Terry Dokidis",
+        name: "Terry Dokuidis",
         lastMessage: "Hey! are you available?",
         messageFrom: "user",
         seen: false,
@@ -67,7 +67,7 @@ class KDummyData {
         date: DateTime.now().toString(),
         isImage: false),
     ParticipantQ(
-        id: 6,
+        uid: 6,
         avatar: KImages.chatAvatar6,
         name: "Philip Westervelt",
         lastMessage: "That's right",
@@ -79,7 +79,7 @@ class KDummyData {
         date: DateTime.now().toString(),
         isImage: false),
     ParticipantQ(
-        id: 7,
+        uid: 7,
         avatar: KImages.chatAvatar7,
         name: "Alfanso Rhifel",
         lastMessage: "Could you please fix this?",
@@ -108,14 +108,14 @@ class KDummyData {
   ];
 
   static ParticipantQsChat participantQsChat = ParticipantQsChat(
-      id: 1,
+      uid: 1,
       participant: "Martin Luther",
       avatar: KImages.chatAvatar1,
       status: "Online",
       contact: "01712312312",
       messages: <Messages>[
         Messages(
-          id: 1,
+          uid: 1,
           message: "Hi",
           sender: "participantQ",
           date: DateTime.now(),
@@ -124,7 +124,7 @@ class KDummyData {
           sent: true,
         ),
         Messages(
-          id: 2,
+          uid: 2,
           message: "Hello",
           sender: "user",
           date: DateTime.now(),
@@ -133,7 +133,7 @@ class KDummyData {
           sent: true,
         ),
         Messages(
-          id: 3,
+          uid: 3,
           message: "How are you?",
           sender: "user",
           date: DateTime.now(),
@@ -142,7 +142,7 @@ class KDummyData {
           sent: true,
         ),
         Messages(
-          id: 4,
+          uid: 4,
           message: "I'm absolutely fine, what about you?",
           sender: "participantQ",
           date: DateTime.now(),
@@ -151,7 +151,7 @@ class KDummyData {
           sent: true,
         ),
         Messages(
-          id: 5,
+          uid: 5,
           message: "Everything is going well",
           sender: "user",
           date: DateTime.now(),
@@ -160,7 +160,7 @@ class KDummyData {
           sent: true,
         ),
         Messages(
-          id: 6,
+          uid: 6,
           message: "Have you done your assignments?",
           sender: "participantQ",
           date: DateTime.now(),
@@ -169,7 +169,7 @@ class KDummyData {
           sent: true,
         ),
         Messages(
-          id: 7,
+          uid: 7,
           message: "No! not yet",
           sender: "user",
           date: DateTime.now(),
@@ -223,7 +223,7 @@ class KDummyData {
       personName: "Martin Loe",
       avatar: KImages.chatAvatar1,
       time: "Today, 11:30 AM",
-      callType: "Video",
+      callType: "Vuideo",
       isMissed: false,
       incoming: false,
       numberOfCall: 2,
@@ -232,7 +232,7 @@ class KDummyData {
         personName: "Carla Korsgaard",
         avatar: KImages.chatAvatar1,
         time: "Yesterday, 8:47 PM",
-        callType: "video",
+        callType: "vuideo",
         isMissed: true,
         incoming: true,
         numberOfCall: 2),
