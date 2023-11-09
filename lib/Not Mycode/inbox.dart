@@ -14,6 +14,7 @@ import 'package:not_whatsapp/Not%20Mycode/message_item.dart';
 import 'package:not_whatsapp/Not%20Mycode/participants_chat_model.dart';
 import 'package:not_whatsapp/Not%20Mycode/utils.dart';
 import 'package:grouped_list/grouped_list.dart';
+
 class Inbox extends StatefulWidget {
   const Inbox({super.key});
 
@@ -25,7 +26,8 @@ class _InboxState extends State<Inbox> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    final user = KDummyData.participantQsChat;
+    // final user = KDummyData.participantQsChat;
+    final user = ;
 
     return WillPopScope(
       onWillPop: () async {
@@ -142,3 +144,8 @@ class _InboxState extends State<Inbox> {
 //       }
 //     });
 // }
+
+
+var userDetails = userList.forEach((element) {
+  
+});

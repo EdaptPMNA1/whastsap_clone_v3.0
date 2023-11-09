@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:not_whatsapp/My%20Code/AddProfile_Page.dart';
 import 'package:not_whatsapp/Not%20Mycode/call_log_model.dart';
 import 'package:not_whatsapp/Not%20Mycode/channel_news_model.dart';
 // import 'package:not_whatsapp/Not%20Mycode/chats_model.dart';
@@ -106,13 +108,14 @@ class KDummyData {
       "avatar": KImages.chatAvatar6,
     }
   ];
+  
 
   static ParticipantQsChat participantQsChat = ParticipantQsChat(
       uid: 1,
       participant: "Martin Luther",
       avatar: KImages.chatAvatar1,
       status: "Online",
-      contact: "01712312312",
+      contact: "",
       messages: <Messages>[
         Messages(
           uid: 1,
@@ -271,3 +274,6 @@ class KDummyData {
     {"user": "Brandan M", "avatar": KImages.chatAvatar6, "status": "At gym"},
   ];
 }
+
+
+var userDetails = userList[0];
