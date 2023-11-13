@@ -2,8 +2,10 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:not_whatsapp/My%20Code/AddProfile_Page.dart';
 import 'package:not_whatsapp/Not%20Mycode/participants_chat_model.dart';
 import 'package:not_whatsapp/Not%20Mycode/utils.dart';
+import 'package:not_whatsapp/main.dart';
 
 class AvatarAndBackNavigate extends StatelessWidget {
   const AvatarAndBackNavigate({
@@ -11,7 +13,7 @@ class AvatarAndBackNavigate extends StatelessWidget {
     required this.user,
   });
 
-  final ParticipantQsChat user;
+  final FireBaseUserQ user;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +26,8 @@ class AvatarAndBackNavigate extends StatelessWidget {
         children: [
           Utils.horizontalSpace(6.w),
           Icon(Platform.isAndroid ? Icons.arrow_back : Icons.arrow_back_ios),
-          CircleAvatar(backgroundImage: AssetImage(user.avatar)),
+          // CircleAvatar(backgroundImage: AssetImage(user.avatar)),
+          CircleAvatar(backgroundColor: themeColorGreen,)
         ],
       ),
     );
@@ -37,7 +40,7 @@ class UserAndStatus extends StatelessWidget {
     required this.user,
   });
 
-  final ParticipantQsChat user;
+  final FireBaseUserQ user;
 
   @override
   Widget build(BuildContext context) {
@@ -45,9 +48,9 @@ class UserAndStatus extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(user.participant),
+        Text(user.name),
         Text(
-          user.status,
+          user.phoneNumber,
           style: Theme.of(context).textTheme.labelMedium!.copyWith(
                 color: Colors.white,
                 fontWeight: FontWeight.w300,

@@ -25,6 +25,7 @@ class MessageController {
           uid: 10,
           message: message,
           sender: "user",
+          reciever: "",
           date: DateTime.now(),
           seen: false,
           delivered: true,
