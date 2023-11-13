@@ -42,10 +42,8 @@ class _ConversationListTilesState extends State<ConversationListTiles> {
                   setState(() {
                     dataClass.indexF = index;
                   });
-                  // Replace these values with actual data
                   String uid = userList[index].uid;
                   String participant = userList[index].name;
-                  // String message = 'Hello, how are you?';
                   print("Uid:$uid\nName:$participant");
                   // Create a new chat and add it to the Realtime Database
                   await dataClass.jFirebaseDatabaseService
