@@ -5,6 +5,7 @@ import 'package:not_whatsapp/My%20Code/AddProfile_Page.dart';
 import 'package:not_whatsapp/Not%20Mycode/community_page.dart';
 import 'package:not_whatsapp/Not%20Mycode/participants_list.dart';
 import 'package:not_whatsapp/Not%20Mycode/updates_page.dart';
+import 'package:not_whatsapp/main.dart';
 import 'routes_name.dart';
 import 'call_logs.dart';
 import 'constants.dart';
@@ -22,6 +23,7 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
   late TabController tabController;
   int selectedTab = 0;
+  // late List<Map<String, dynamic>> firebaseData;
 
   @override
   void initState() {
@@ -33,6 +35,11 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    // if (firebaseData == null || firebaseData.isEmpty) {
+    //   return Center(
+    //     child: CircularProgressIndicator(),
+    //   );
+    // }
     return DefaultTabController(
       length: 4,
       initialIndex: 1,
@@ -76,8 +83,12 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
                       child: Text("New boradcast"),
                     ),
                     PopupMenuItem(
-                      child: Text("Linked devices"),
-                    ),
+                        child: Text("Linked devices"),
+                        onTap: () {
+                          print('User List Length: ${userList.length}');
+                          print(
+                              'Firebase Data Length: ${dataClass.firebaseData.length}');
+                        }),
                     PopupMenuItem(
                       child: Text("Starred messages"),
                       onTap: () {
@@ -151,7 +162,7 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
         ),
         body: TabBarView(controller: tabController, children: [
           CommunityPage(),
-          ConversationList(),
+          ConversationListTiles(),
           UpdatesPage(),
           CallLogs(),
         ]),

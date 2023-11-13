@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:not_whatsapp/main.dart';
 
@@ -13,12 +12,11 @@ class profilePage extends StatefulWidget {
 class _profilePageState extends State<profilePage> {
   late String _name = ''; // Initialize the name variable
   late String _phno = ''; // Initialize the name variable
-  final User? fireBaseUser = FirebaseAuth.instance.currentUser;
 
 Future<void> fetchData() async {
   final DocumentSnapshot snapshot = await FirebaseFirestore.instance
       .collection('Users')
-      .doc('ynLPF0ryeGSKOyEcbCsulbDi70c2') // Replace with your Uuid
+      .doc(dataClass.fireBaseUser?.uid) // Replace with your Uuid
       .get();
   if (snapshot.exists) {
     Map<String, dynamic>? data = snapshot.data() as Map<String, dynamic>?;

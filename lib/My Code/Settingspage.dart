@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:not_whatsapp/Not%20Mycode/routes_name.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:not_whatsapp/main.dart';
+
 
 class Settingpage extends StatefulWidget {
   // final String? name; // Add the name parameter
@@ -20,7 +20,7 @@ class _SettingpageState extends State<Settingpage> {
   Future<void> fetchData() async {
     final DocumentSnapshot snapshot = await FirebaseFirestore.instance
         .collection('Users')
-        .doc(user.uid) // Replace with your Uuid
+        .doc(dataClass.user.uid) // Replace with your Uuid
         .get();
     if (snapshot.exists) {
       Map<String, dynamic>? data = snapshot.data() as Map<String, dynamic>?;
@@ -39,9 +39,6 @@ class _SettingpageState extends State<Settingpage> {
     super.initState();
   }
 
-  User user = FirebaseAuth.instance.currentUser!;
-  final CollectionReference users =
-      FirebaseFirestore.instance.collection('Users');
   @override
   Widget build(BuildContext context) {
     return Scaffold(
