@@ -25,7 +25,20 @@ class _InboxState extends State<Inbox> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    final user = KDummyData.participantQsChat;
+    // final user = KDummyData.participantQsChat;
+    final FirebaseFirestore firestore = FirebaseFirestore.instance;
+
+    Future<void> sendMessage(String text) async {
+  // final user = KDummyData.participantQsChat; // Get the current user
+  final messagesCollection = firestore.collection('yourCollectionName');
+  
+  await messagesCollection.add({
+    'text': text,
+    'sende(rId': user.uid,
+    'timestamp': FieldValue.serverTimestamp(),
+  });
+}
+
 
     return WillPopScope(
       onWillPop: () async {
@@ -33,7 +46,7 @@ class _InboxState extends State<Inbox> {
         return true;
       },
       child: Scaffold(
-        appBar: _buildAppBar(user),
+         appBar: _buildAppBar(user),
         body: Container(
           height: size.height,
           width: size.width,
@@ -41,46 +54,55 @@ class _InboxState extends State<Inbox> {
           child: Column(
             children: [
               Expanded(
-                child: StreamBuilder(
-                    stream: MessageController.streamData,
-                    builder: (context, snapshot) {
-                      if (snapshot.data != null) {
-                        final messageList = snapshot.data!.reversed.toList();
-                        return GroupedListView<Messages, DateTime>(
-                          padding: const EdgeInsets.all(0),
-                          elements: messageList,
-                          // controller: controller,
-                          groupBy: (element) => DateTime(
-                            element.date.year,
-                            element.date.month,
-                            element.date.day,
-                          ),
-                          groupSeparatorBuilder: (DateTime groupByValue) =>
-                              MessageSeparator(groupByValue: groupByValue),
+             child: StreamBuilder<QuerySnapshot>(
+    stream: firestore.collection('yourCollectionName').snapshots(),
+    builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+      if (snapshot.connectionState == ConnectionState.waiting) {
+        return CircularProgressIndicator();
+      }
+      if (snapshot.hasError) {
+        return Text('Error: ${snapshot.error}');
+      }
 
-                          itemBuilder: (context, Messages element) =>
-                              MessageComponent(element: element),
+      final messageList = snapshot.data?.docs.map((doc) {
+        final data = doc.data() as Map<String, dynamic>;
+        // Create a Messages object or your message model from the data.
+        // Example:
+        return Messages(
+          uid: int,
+          text: data['text'],
+          senderId: data['senderId'],
+          date: data['timestamp'].toDate(),     
+          // Add other fields as needed.
+        );
+      }).toList();
 
-                          itemComparator: (item1, item2) =>
-                              item1.date.compareTo(item2.date),
-                          // optional
-                          useStickyGroupSeparators: false,
-                          // optional
-                          floatingHeader: true,
-                          // optional
-                          order: GroupedListOrder.ASC, // optional
-                        );
-                      }
-                      return const SizedBox();
-                    }),
+      return GroupedListView<Messages, DateTime>(
+        elements: MessageController.list, // Provide your messageList here
+        groupBy: (Messages element) {
+          // Group by the date property of your Messages class
+          return DateTime(
+            element.date.year,
+            element.date.month,
+            element.date.day,
+          );
+        },
+        // ... other properties like itemBuilder, etc.
+      );
+    },
+             ),
+),
+            ]
               ),
-              TextEmojiInputField(),
-              Utils.verticalSpace(size.height * 0.02),
-            ],
+              
+              // const TextEmojiInputField(),
+              // Utils.verticalSpace(size.height * 0.02),
+          
+            
           ),
         ),
-      ),
-    );
+      );
+    
   }
 
   AppBar _buildAppBar(ParticipantQsChat user) {

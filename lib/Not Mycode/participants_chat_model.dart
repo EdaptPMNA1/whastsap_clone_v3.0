@@ -10,6 +10,7 @@ class ParticipantQsChat {
   final String status;
   final String contact;
   final List<Messages> messages;
+
   ParticipantQsChat({
     required this.uid,
     required this.participant,
@@ -106,6 +107,7 @@ class Messages {
   final bool sent;
   final String? image;
   final String? vuideo;
+
   Messages({
     required this.uid,
     required this.message,

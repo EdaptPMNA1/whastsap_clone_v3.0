@@ -80,6 +80,10 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
                     ),
                     PopupMenuItem(
                       child: Text("Starred messages"),
+                      onTap: () {
+                        setLoggedInStatus(false);
+                        Navigator.pushNamed(context, RouteNames.auth);
+                      },
                     ),
                     PopupMenuItem(
                       child: Text("Settins"),
