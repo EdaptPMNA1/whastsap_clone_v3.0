@@ -3,23 +3,23 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 
-class ParticipantQsChat {
+class FirebaseChat {
   final String uid;
   final String participant;
-  final String avatar;
+  // final String avatar;
   final String status;
   final String contact;
   final List<Messages> messages;
-  ParticipantQsChat({
+  FirebaseChat({
     required this.uid,
     required this.participant,
-    required this.avatar,
+    // required this.avatar,
     required this.status,
     required this.contact,
     required this.messages,
   });
 
-  ParticipantQsChat copyWith({
+  FirebaseChat copyWith({
     String? uid,
     String? participant,
     String? avatar,
@@ -27,10 +27,10 @@ class ParticipantQsChat {
     String? contact,
     List<Messages>? messages,
   }) {
-    return ParticipantQsChat(
+    return FirebaseChat(
       uid: uid ?? this.uid,
       participant: participant ?? this.participant,
-      avatar: avatar ?? this.avatar,
+      // avatar: avatar ?? this.avatar,
       status: status ?? this.status,
       contact: contact ?? this.contact,
       messages: messages ?? this.messages,
@@ -41,18 +41,18 @@ class ParticipantQsChat {
     return <String, dynamic>{
       'uid': uid,
       'participant': participant,
-      'avatar': avatar,
+      // 'avatar': avatar,
       'status': status,
       'contact': contact,
       'messages': messages.map((x) => x.toMap()).toList(),
     };
   }
 
-  factory ParticipantQsChat.fromMap(Map<String, dynamic> map) {
-    return ParticipantQsChat(
+  factory FirebaseChat.fromMap(Map<String, dynamic> map) {
+    return FirebaseChat(
       uid: map['uid'] as String,
       participant: map['participant'] as String,
-      avatar: map['avatar'] as String,
+      // avatar: map['avatar'] as String,
       status: map['status'] as String,
       contact: map['contact'] as String,
       messages: List<Messages>.from(
@@ -65,21 +65,21 @@ class ParticipantQsChat {
 
   String toJson() => json.encode(toMap());
 
-  factory ParticipantQsChat.fromJson(String source) =>
-      ParticipantQsChat.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory FirebaseChat.fromJson(String source) =>
+      FirebaseChat.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
   String toString() {
-    return 'ParticipantQsChat(uid: $uid, participant: $participant, avatar: $avatar, status: $status, contact: $contact, messages: $messages)';
+    return 'ParticipantQsChat(uid: $uid, participant: $participant, avatar: , status: $status, contact: $contact, messages: $messages)';
   }
 
   @override
-  bool operator ==(covariant ParticipantQsChat other) {
+  bool operator ==(covariant FirebaseChat other) {
     if (identical(this, other)) return true;
 
     return other.uid == uid &&
         other.participant == participant &&
-        other.avatar == avatar &&
+        // other.avatar == avatar &&
         other.status == status &&
         other.contact == contact &&
         listEquals(other.messages, messages);
@@ -89,7 +89,7 @@ class ParticipantQsChat {
   int get hashCode {
     return uid.hashCode ^
         participant.hashCode ^
-        avatar.hashCode ^
+        // avatar.hashCode ^
         status.hashCode ^
         contact.hashCode ^
         messages.hashCode;
@@ -100,45 +100,49 @@ class Messages {
   final int uid;
   final String message;
   final String sender;
+  final String reciever;
   final DateTime date;
   final bool seen;
   final bool delivered;
   final bool sent;
   final String? image;
-  final String? vuideo;
+  final String? video;
   Messages({
     required this.uid,
     required this.message,
     required this.sender,
+    required this.reciever,
     required this.date,
     required this.seen,
     required this.delivered,
     required this.sent,
     this.image,
-    this.vuideo,
+    this.video,
   });
 
   Messages copyWith({
     int? uid,
     String? message,
     String? sender,
+    String? reciever,
     DateTime? date,
     bool? seen,
     bool? delivered,
     bool? sent,
     String? image,
-    String? vuideo,
+    String? video,
   }) {
     return Messages(
       uid: uid ?? this.uid,
       message: message ?? this.message,
       sender: sender ?? this.sender,
+      reciever: reciever ?? this.reciever,
       date: date ?? this.date,
       seen: seen ?? this.seen,
       delivered: delivered ?? this.delivered,
       sent: sent ?? this.sent,
       image: image ?? this.image,
-      vuideo: vuideo ?? this.vuideo,
+      video: video ?? this.video,
     );
   }
 
@@ -147,12 +151,13 @@ class Messages {
       'uid': uid,
       'message': message,
       'sender': sender,
+      'reciever': reciever,
       'date': date.millisecondsSinceEpoch,
       'seen': seen,
       'delivered': delivered,
       'sent': sent,
       'image': image,
-      'vuideo': vuideo,
+      'vuideo': video,
     };
   }
 
@@ -161,12 +166,13 @@ class Messages {
       uid: map['uid'] as int,
       message: map['message'] as String,
       sender: map['sender'] as String,
+      reciever: map['reciever'] as String,
       date: DateTime.fromMillisecondsSinceEpoch(map['date'] as int),
       seen: map['seen'] as bool,
       delivered: map['delivered'] as bool,
       sent: map['sent'] as bool,
       image: map['image'] != null ? map['image'] as String : null,
-      vuideo: map['vuideo'] != null ? map['vuideo'] as String : null,
+      video: map['vuideo'] != null ? map['vuideo'] as String : null,
     );
   }
 
@@ -177,7 +183,7 @@ class Messages {
 
   @override
   String toString() {
-    return 'Messags(uid: $uid, message: $message, sender: $sender, date: $date, seen: $seen, delivered: $delivered, sent: $sent, image: $image, vuideo: $vuideo)';
+    return 'Messags(uid: $uid, message: $message, sender: $sender, reciever: $reciever, date: $date, seen: $seen, delivered: $delivered, sent: $sent, image: $image, vuideo: $video)';
   }
 
   @override
@@ -187,12 +193,13 @@ class Messages {
     return other.uid == uid &&
         other.message == message &&
         other.sender == sender &&
+        other.reciever == reciever &&
         other.date == date &&
         other.seen == seen &&
         other.delivered == delivered &&
         other.sent == sent &&
         other.image == image &&
-        other.vuideo == vuideo;
+        other.video == video;
   }
 
   @override
@@ -200,11 +207,12 @@ class Messages {
     return uid.hashCode ^
         message.hashCode ^
         sender.hashCode ^
+        reciever.hashCode ^
         date.hashCode ^
         seen.hashCode ^
         delivered.hashCode ^
         sent.hashCode ^
         image.hashCode ^
-        vuideo.hashCode;
+        video.hashCode;
   }
 }

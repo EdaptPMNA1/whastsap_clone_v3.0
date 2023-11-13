@@ -8,7 +8,6 @@ import 'package:not_whatsapp/Not%20Mycode/main_screen.dart';
 import 'package:not_whatsapp/Not%20Mycode/splash_screen.dart';
 import 'package:not_whatsapp/Not%20Mycode/story_view.dart';
 import 'package:not_whatsapp/Not%20Mycode/welcome_screen.dart';
-import 'package:not_whatsapp/main.dart';
 
 class RouteNames {
   static const String splashScreen = '/s';

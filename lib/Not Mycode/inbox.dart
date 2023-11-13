@@ -25,7 +25,8 @@ class Inbox extends StatefulWidget {
 }
 
 class _InboxState extends State<Inbox> {
-  late ParticipantQsChat selectedUser = KDummyData.participantQsChat;
+  late FirebaseChat selectedUser = KDummyData.participantQsChat;
+  // late FirebaseChat selectedUser;
   // late ParticipantQsChat selectedUser;
   // late List<Map<String, dynamic>> selectedUser = dataClass.firebaseData[]['Name'];
   // String? selectedUserName = dataClass.firebaseData.isNotEmpty
@@ -33,10 +34,31 @@ class _InboxState extends State<Inbox> {
   //   : null;
 // dynamic specificData = firebaseData.isNotEmpty ? firebaseData[0]['fieldName'] : null;
 
-  void selectUser(ParticipantQsChat user) {
-    setState(() {
-      selectedUser = user;
-    });
+  // void selectUser(FirebaseChat user) {
+  //   setState(() {
+  //     selectedUser = user;
+  //   });
+  // }
+
+  @override
+  void initState() {
+    super.initState();
+    for (var l = 0; l < userList.length; l++) {
+      // for (var item in userList) {
+      // print(l);
+      // print(userList[l].uid);
+      // print(userList[l].name);
+      // print(dataClass.fParticipant);
+      if (userList[l].name == dataClass.fParticipant) {
+        dataClass.fAppBarName = userList[l];
+        dataClass.jkIndex = l;
+        print("\n");
+        print(dataClass.fAppBarName.name);
+        // selectedUser = dataClass.fAppBarName;
+      }
+      // print(selectedUser);
+    }
+    // }
   }
 
   @override
@@ -49,7 +71,7 @@ class _InboxState extends State<Inbox> {
         return true;
       },
       child: Scaffold(
-        appBar: _buildAppBar(selectedUser),
+        appBar: _buildAppBar(dataClass.fAppBarName),
         body: Container(
           height: size.height,
           width: size.width,
@@ -93,7 +115,7 @@ class _InboxState extends State<Inbox> {
     );
   }
 
-  AppBar _buildAppBar(ParticipantQsChat user) {
+  AppBar _buildAppBar(FireBaseUserQ user) {
     return AppBar(
       backgroundColor: primaryColor,
       leadingWidth: 70.w,
