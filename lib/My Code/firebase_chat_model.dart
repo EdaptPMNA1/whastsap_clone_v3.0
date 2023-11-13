@@ -2,15 +2,16 @@
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
+import 'package:firebase_database/firebase_database.dart';
 
-class ParticipantQsChat {
+class FirebaseChat {
   final String uid;
   final String participant;
   final String avatar;
   final String status;
   final String contact;
   final List<Messages> messages;
-  ParticipantQsChat({
+  FirebaseChat({
     required this.uid,
     required this.participant,
     required this.avatar,
@@ -19,7 +20,7 @@ class ParticipantQsChat {
     required this.messages,
   });
 
-  ParticipantQsChat copyWith({
+  FirebaseChat copyWith({
     String? uid,
     String? participant,
     String? avatar,
@@ -27,7 +28,7 @@ class ParticipantQsChat {
     String? contact,
     List<Messages>? messages,
   }) {
-    return ParticipantQsChat(
+    return FirebaseChat(
       uid: uid ?? this.uid,
       participant: participant ?? this.participant,
       avatar: avatar ?? this.avatar,
@@ -48,8 +49,8 @@ class ParticipantQsChat {
     };
   }
 
-  factory ParticipantQsChat.fromMap(Map<String, dynamic> map) {
-    return ParticipantQsChat(
+  factory FirebaseChat.fromMap(Map<String, dynamic> map) {
+    return FirebaseChat(
       uid: map['uid'] as String,
       participant: map['participant'] as String,
       avatar: map['avatar'] as String,
@@ -65,8 +66,8 @@ class ParticipantQsChat {
 
   String toJson() => json.encode(toMap());
 
-  factory ParticipantQsChat.fromJson(String source) =>
-      ParticipantQsChat.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory FirebaseChat.fromJson(String source) =>
+      FirebaseChat.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
   String toString() {
@@ -74,7 +75,7 @@ class ParticipantQsChat {
   }
 
   @override
-  bool operator ==(covariant ParticipantQsChat other) {
+  bool operator ==(covariant FirebaseChat other) {
     if (identical(this, other)) return true;
 
     return other.uid == uid &&
@@ -206,5 +207,13 @@ class Messages {
         sent.hashCode ^
         image.hashCode ^
         vuideo.hashCode;
+  }
+}
+
+class FirebaseDatabaseService {
+  final DatabaseReference _database = FirebaseDatabase.instance.ref();
+
+  Future<void> addChat(FirebaseChat chat) async {
+    await _database.child('chats').push().set(chat.toMap());
   }
 }

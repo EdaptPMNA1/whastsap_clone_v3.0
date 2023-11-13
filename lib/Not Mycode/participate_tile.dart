@@ -6,21 +6,53 @@ import 'package:not_whatsapp/Not%20Mycode/constants.dart';
 import 'package:not_whatsapp/Not%20Mycode/routes_name.dart';
 import 'package:not_whatsapp/Not%20Mycode/utils.dart';
 import 'package:intl/intl.dart';
+import 'package:not_whatsapp/main.dart';
 
 class ParticipateTile extends StatelessWidget {
-  const ParticipateTile({
-    super.key,
-    required this.player,
-  });
-
+  const ParticipateTile(
+      {
+      // super.key,
+      required this.player,
+      required this.index});
 
   final FireBaseUserQ player;
+  final int index;
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      onTap: () {
-        Navigator.pushNamed(context, RouteNames.inbox);
+      onTap: () async {
+        // Replace these values with actual data
+        String uid = userList[index].uid;
+        String participant = userList[index].name;
+        // String message = 'Hello, how are you?';
+        print("Uid:$uid\nName:$participant");
+        // Create a new chat and add it to the Realtime Database
+        await dataClass.jFirebaseDatabaseService.addChat(uid, participant);
+        print("Clicked ParticipateTile List Tile");
+        // Navigator.pushNamed(context, RouteNames.inbox);
+        // Navigator.pushNamed(
+        //   context,
+        //   RouteNames.inbox,
+        //   arguments: context,
+        // );
+        // Assuming player.uid is a unique identifier for each user
+        String currentUserId =
+            'user1'; // Replace with the actual current user's ID
+        String participantUserId =
+            player.uid; // The ID of the participant in the chat
+
+        // Navigate to the chat screen with the required data
+        Navigator.pushNamed(
+          context,
+          RouteNames.inbox,
+          arguments: {
+            'currentUserId': currentUserId,
+            'participantUserId': participantUserId,
+            'participantName': player.name,
+            // Add more data if needed
+          },
+        );
       },
       contentPadding: EdgeInsets.zero,
       horizontalTitleGap: 10,

@@ -1,17 +1,18 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:not_whatsapp/My%20Code/AddProfile_Page.dart';
 import 'package:not_whatsapp/Not%20Mycode/call_log_model.dart';
 import 'package:not_whatsapp/Not%20Mycode/channel_news_model.dart';
+import 'package:not_whatsapp/Not%20Mycode/inbox.dart';
 // import 'package:not_whatsapp/Not%20Mycode/chats_model.dart';
 import 'package:not_whatsapp/Not%20Mycode/k_images.dart';
 import 'package:not_whatsapp/Not%20Mycode/participants_chat_model.dart';
+import 'package:not_whatsapp/Not Mycode/data_assigning.dart';
+import 'package:not_whatsapp/main.dart';
 
 // FirebaseFirestore firebaseStore = FirebaseFirestore.instance.collection("Users");
+// final selectAUser = dataClass.inboxInstance;
+const Inbox inb = Inbox();
 
 class KDummyData {
-    
   // static List<ParticipantQ> chatsList = [
   //   ParticipantQ(
   //       uid: 1,
@@ -99,7 +100,6 @@ class KDummyData {
   //       isImage: false),
   // ];
 
-
   static List<Map<String, String>> storyList = [
     {
       "user": "Martin Luther",
@@ -114,13 +114,15 @@ class KDummyData {
       "avatar": KImages.chatAvatar6,
     }
   ];
-  final CollectionReference usersFire = FirebaseFirestore.instance.collection("Users");
-
+  final CollectionReference usersFire =
+      FirebaseFirestore.instance.collection("Users");
   // final User? userS = ;
 
+// dynamic specificData = firebaseData.isNotEmpty ? firebaseData[0]['fieldName'] : null;
+
   static ParticipantQsChat participantQsChat = ParticipantQsChat(
-      uid: 1,
-      participant: "userS!.displayName.toString()",
+      uid: "${inb.key}",
+      participant: "usersFire.doc()",
       avatar: KImages.chatAvatar1,
       status: "Online",
       contact: "",

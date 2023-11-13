@@ -13,11 +13,13 @@ import 'package:not_whatsapp/Not%20Mycode/message_item.dart';
 import 'package:not_whatsapp/Not%20Mycode/participants_chat_model.dart';
 import 'package:not_whatsapp/Not%20Mycode/utils.dart';
 import 'package:grouped_list/grouped_list.dart';
+import 'package:not_whatsapp/main.dart';
 
 class Inbox extends StatefulWidget {
-  const Inbox({Key? key, required this.uid}) : super(key: key);
-  
-  final String uid;
+  const Inbox({Key? key}) : super(key: key);
+  //   const Inbox({Key? key, required this.uid}) : super(key: key);
+
+  // final String uid;
 
   @override
   State<Inbox> createState() => _InboxState();
@@ -25,8 +27,14 @@ class Inbox extends StatefulWidget {
 
 class _InboxState extends State<Inbox> {
   late ParticipantQsChat selectedUser = KDummyData.participantQsChat;
+  // late ParticipantQsChat selectedUser;
+  // late List<Map<String, dynamic>> selectedUser = dataClass.firebaseData[]['Name'];
+  // String? selectedUserName = dataClass.firebaseData.isNotEmpty
+  //   ? dataClass.firebaseData[0]['Name']
+  //   : null;
+// dynamic specificData = firebaseData.isNotEmpty ? firebaseData[0]['fieldName'] : null;
 
-  void _selectUser(ParticipantQsChat user) {
+  void selectUser(ParticipantQsChat user) {
     setState(() {
       selectedUser = user;
     });
@@ -65,10 +73,8 @@ class _InboxState extends State<Inbox> {
                           ),
                           groupSeparatorBuilder: (DateTime groupByValue) =>
                               MessageSeparator(groupByValue: groupByValue),
-
                           itemBuilder: (context, Messages element) =>
                               MessageComponent(element: element),
-
                           itemComparator: (item1, item2) =>
                               item1.date.compareTo(item2.date),
                           useStickyGroupSeparators: false,

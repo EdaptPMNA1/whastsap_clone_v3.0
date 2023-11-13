@@ -8,6 +8,8 @@ import 'package:not_whatsapp/Not%20Mycode/main_screen.dart';
 import 'package:not_whatsapp/Not%20Mycode/splash_screen.dart';
 import 'package:not_whatsapp/Not%20Mycode/story_view.dart';
 import 'package:not_whatsapp/Not%20Mycode/welcome_screen.dart';
+import 'package:not_whatsapp/main.dart';
+
 class RouteNames {
   static const String splashScreen = '/s';
   static const String mainScreen = '/mainScreen';
@@ -32,7 +34,7 @@ class RouteNames {
             settings: settings, builder: (_) => const MainScreen());
       case RouteNames.inbox:
         return MaterialPageRoute(
-            settings: settings, builder: (_) => const Inbox(uid: '',));
+          settings: settings,builder: (chat) => Inbox(/*dataClass.fireBaseUser!.uid*/));
       case RouteNames.storyPage:
         return MaterialPageRoute(
             settings: settings, builder: (_) => MyStoryPage());
