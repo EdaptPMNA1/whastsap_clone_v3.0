@@ -1,8 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:not_whatsapp/My%20Code/AddProfile_Page.dart';
 import 'package:not_whatsapp/Not%20Mycode/appbar_component.dart';
 import 'package:not_whatsapp/Not%20Mycode/constants.dart';
 import 'package:not_whatsapp/Not%20Mycode/dummy_data.dart';
@@ -14,17 +12,37 @@ import 'package:not_whatsapp/Not%20Mycode/message_item.dart';
 import 'package:not_whatsapp/Not%20Mycode/participants_chat_model.dart';
 import 'package:not_whatsapp/Not%20Mycode/utils.dart';
 import 'package:grouped_list/grouped_list.dart';
+import 'package:not_whatsapp/main.dart';
+
 class Inbox extends StatefulWidget {
-  const Inbox({super.key});
+  const Inbox({Key? key}) : super(key: key);
+  //   const Inbox({Key? key, required this.uid}) : super(key: key);
+
+  // final String uid;
 
   @override
   State<Inbox> createState() => _InboxState();
 }
 
 class _InboxState extends State<Inbox> {
+  late ParticipantQsChat selectedUser = KDummyData.participantQsChat;
+  // late ParticipantQsChat selectedUser;
+  // late List<Map<String, dynamic>> selectedUser = dataClass.firebaseData[]['Name'];
+  // String? selectedUserName = dataClass.firebaseData.isNotEmpty
+  //   ? dataClass.firebaseData[0]['Name']
+  //   : null;
+// dynamic specificData = firebaseData.isNotEmpty ? firebaseData[0]['fieldName'] : null;
+
+  void selectUser(ParticipantQsChat user) {
+    setState(() {
+      selectedUser = user;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+<<<<<<< HEAD
     // final user = KDummyData.participantQsChat;
     final FirebaseFirestore firestore = FirebaseFirestore.instance;
 
@@ -39,6 +57,8 @@ class _InboxState extends State<Inbox> {
   });
 }
 
+=======
+>>>>>>> 3ec096c251b4e3813ad01c419ae28218921cbb12
 
     return WillPopScope(
       onWillPop: () async {
@@ -46,7 +66,11 @@ class _InboxState extends State<Inbox> {
         return true;
       },
       child: Scaffold(
+<<<<<<< HEAD
          appBar: _buildAppBar(user),
+=======
+        appBar: _buildAppBar(selectedUser),
+>>>>>>> 3ec096c251b4e3813ad01c419ae28218921cbb12
         body: Container(
           height: size.height,
           width: size.width,
@@ -54,6 +78,7 @@ class _InboxState extends State<Inbox> {
           child: Column(
             children: [
               Expanded(
+<<<<<<< HEAD
              child: StreamBuilder<QuerySnapshot>(
     stream: firestore.collection('yourCollectionName').snapshots(),
     builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
@@ -93,6 +118,34 @@ class _InboxState extends State<Inbox> {
              ),
 ),
             ]
+=======
+                child: StreamBuilder(
+                    stream: MessageController.streamData,
+                    builder: (context, snapshot) {
+                      if (snapshot.data != null) {
+                        final messageList = snapshot.data!.reversed.toList();
+                        return GroupedListView<Messages, DateTime>(
+                          padding: const EdgeInsets.all(0),
+                          elements: messageList,
+                          groupBy: (element) => DateTime(
+                            element.date.year,
+                            element.date.month,
+                            element.date.day,
+                          ),
+                          groupSeparatorBuilder: (DateTime groupByValue) =>
+                              MessageSeparator(groupByValue: groupByValue),
+                          itemBuilder: (context, Messages element) =>
+                              MessageComponent(element: element),
+                          itemComparator: (item1, item2) =>
+                              item1.date.compareTo(item2.date),
+                          useStickyGroupSeparators: false,
+                          floatingHeader: true,
+                          order: GroupedListOrder.ASC,
+                        );
+                      }
+                      return const SizedBox();
+                    }),
+>>>>>>> 3ec096c251b4e3813ad01c419ae28218921cbb12
               ),
               
               // const TextEmojiInputField(),
@@ -134,33 +187,3 @@ class _InboxState extends State<Inbox> {
     );
   }
 }
-
-
-// Future<void> _sentMessage() async {
-//   QuerySnapshot querySnapshot = await users.get();
-//     querySnapshot.docs.forEach((doc) {
-//       ParticipantQsChat user = ParticipantQsChat(
-//           uid: doc['Uuid'],
-//           bio: doc['Bio'],
-//           name: doc['Name'],
-//           phoneNumber: doc['Phno'],
-//           avatar: '',
-//           messages:,
-//           messageFrom: 'Someone',
-//           lastMessage: '',
-//           isImage: false,
-//           sent: false,
-//           delivered: false,
-//           unread: 0,
-//           seen: true,
-//           date: DateTime.now().toString());
-
-//       // Check if the user already exists in the list based on the user id
-//       if (!userList.any((element) => element.uid == user.uid)) {
-//         setState(() {
-//           userList.add(user);
-//           print('\n\n\nDetails Saved\n\n\n');
-//         });
-//       }
-//     });
-// }
