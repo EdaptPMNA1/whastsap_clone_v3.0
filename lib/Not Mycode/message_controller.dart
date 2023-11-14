@@ -23,9 +23,9 @@ class MessageController {
 
   static addMessage(String message) {
     list.insert(
-      0,
+      list.length,
       Messages(
-        uid: 10,
+        uid: list.length ,
         message: message,
         sender: dataClass.user.uid.toString(),
         reciever: userList[dataClass.jkIndex].uid.toString(),
@@ -35,7 +35,11 @@ class MessageController {
         sent: true,
       ),
     );
-
+    dataClass.checkIfChildExists(
+        dataClass.user.uid.toString(),
+        userList[dataClass.jkIndex].uid.toString(),
+        DateTime.now().toString(),
+        message);
     streamSink.add(list);
     // fBs.addChat(chat)
   }

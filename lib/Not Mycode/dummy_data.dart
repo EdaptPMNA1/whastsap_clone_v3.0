@@ -36,16 +36,16 @@ class KDummyData {
       status: "",
       contact: "",
       messages: <Messages>[
-        Messages(
-          uid: 0,
-          message: "bruh",
-          sender: dataClass.user.uid.toString(),
-          reciever: userList[dataClass.jkIndex].uid.toString(),
-          date: DateTime.now(),
-          seen: true,
-          delivered: true,
-          sent: true,
-        ),
+        // Messages(
+        //   uid: 0,
+        //   message: "bruh",
+        //   sender: dataClass.user.uid.toString(),
+        //   reciever: userList[dataClass.jkIndex].uid.toString(),
+        //   date: DateTime.now(),
+        //   seen: true,
+        //   delivered: true,
+        //   sent: true,
+        // ),
       ]);
 
   static List<ChannelNews> channelNews = [
