@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:not_whatsapp/Not%20Mycode/dummy_data.dart';
+// import 'package:not_whatsapp/Not%20Mycode/dummy_data.dart';
 import 'participants_chat_model.dart';
 
 class MessageController {
@@ -14,7 +14,7 @@ class MessageController {
   static Stream<List<Messages>> get streamData => streamController.stream;
   static List<Messages> list = [];
   static init() {
-    list = KDummyData.participantQsChat.messages;
+    // list = KDummyData.participantQsChat.messages;
     streamSink.add(list);
   }
 

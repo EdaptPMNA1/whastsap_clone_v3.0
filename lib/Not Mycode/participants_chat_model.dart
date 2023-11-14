@@ -3,14 +3,15 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 
-class FirebaseChat {
+class ParticipantQsChat {
   final String uid;
   final String participant;
   // final String avatar;
   final String status;
   final String contact;
   final List<Messages> messages;
-  FirebaseChat({
+
+  ParticipantQsChat({
     required this.uid,
     required this.participant,
     // required this.avatar,
@@ -19,7 +20,7 @@ class FirebaseChat {
     required this.messages,
   });
 
-  FirebaseChat copyWith({
+  ParticipantQsChat copyWith({
     String? uid,
     String? participant,
     String? avatar,
@@ -27,7 +28,7 @@ class FirebaseChat {
     String? contact,
     List<Messages>? messages,
   }) {
-    return FirebaseChat(
+    return ParticipantQsChat(
       uid: uid ?? this.uid,
       participant: participant ?? this.participant,
       // avatar: avatar ?? this.avatar,
@@ -48,8 +49,8 @@ class FirebaseChat {
     };
   }
 
-  factory FirebaseChat.fromMap(Map<String, dynamic> map) {
-    return FirebaseChat(
+  factory ParticipantQsChat.fromMap(Map<String, dynamic> map) {
+    return ParticipantQsChat(
       uid: map['uid'] as String,
       participant: map['participant'] as String,
       // avatar: map['avatar'] as String,
@@ -65,8 +66,8 @@ class FirebaseChat {
 
   String toJson() => json.encode(toMap());
 
-  factory FirebaseChat.fromJson(String source) =>
-      FirebaseChat.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory ParticipantQsChat.fromJson(String source) =>
+      ParticipantQsChat.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
   String toString() {
@@ -74,7 +75,7 @@ class FirebaseChat {
   }
 
   @override
-  bool operator ==(covariant FirebaseChat other) {
+  bool operator ==(covariant ParticipantQsChat other) {
     if (identical(this, other)) return true;
 
     return other.uid == uid &&

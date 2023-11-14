@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:not_whatsapp/My%20Code/AddProfile_Page.dart';
+import 'package:not_whatsapp/My%20Code/firebase_chat_model.dart';
 import 'package:not_whatsapp/Not%20Mycode/appbar_component.dart';
 import 'package:not_whatsapp/Not%20Mycode/constants.dart';
 import 'package:not_whatsapp/Not%20Mycode/dummy_data.dart';
@@ -25,7 +27,7 @@ class Inbox extends StatefulWidget {
 }
 
 class _InboxState extends State<Inbox> {
-  late FirebaseChat selectedUser = KDummyData.participantQsChat;
+  late ParticipantQsChat selectedUser = KDummyData.participantQsChat;
   // late FirebaseChat selectedUser;
   // late ParticipantQsChat selectedUser;
   // late List<Map<String, dynamic>> selectedUser = dataClass.firebaseData[]['Name'];

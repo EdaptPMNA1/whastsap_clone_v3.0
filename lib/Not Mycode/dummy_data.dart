@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:not_whatsapp/My%20Code/AddProfile_Page.dart';
+import 'package:not_whatsapp/My%20Code/firebase_chat_model.dart';
 import 'package:not_whatsapp/Not%20Mycode/call_log_model.dart';
 import 'package:not_whatsapp/Not%20Mycode/channel_news_model.dart';
 import 'package:not_whatsapp/Not%20Mycode/inbox.dart';
@@ -30,7 +31,7 @@ class KDummyData {
       "avatar": KImages.chatAvatar6,
     }
   ];
-  static FirebaseChat participantQsChat = FirebaseChat(
+  static ParticipantQsChat participantQsChat = ParticipantQsChat(
       uid: userList[dataClass.jkIndex].uid,
       participant: userList[dataClass.jkIndex].name,
       // avatar: KImages.chatAvatar1,
@@ -101,7 +102,7 @@ class KDummyData {
         //   delivered: true,
         //   sent: true,
         // ),
-      ]);
+      ],);
 
   static List<ChannelNews> channelNews = [
     ChannelNews(
