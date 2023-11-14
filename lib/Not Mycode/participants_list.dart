@@ -92,17 +92,27 @@ class ArchiveTile extends StatelessWidget {
 
 class FirebaseDatabaseService {
   final DatabaseReference _database = FirebaseDatabase.instance.ref();
-  final DatabaseReference conversationRef =
-      FirebaseDatabase.instance.ref().child('chats').child('conversations');
+  // final DatabaseReference conversationRef =
+  //     FirebaseDatabase.instance.ref().child('chats');
   final StreamController<List<String>> _conversationController =
       StreamController<List<String>>.broadcast();
   Stream<List<String>> get conversationStream => _conversationController.stream;
 
-  Future<void> addChat(
-      String uid, String participant /*, String message*/) async {
-    await _database.child('chats').child(uid).child(participant).update({
-      'participant': participant,
-      // 'message': message,
+  Future<void> updateChat(
+      String uid, String to, String time, String message) async {
+    await _database.child('chats').child("From :${dataClass.user.uid}").child("To: $uid").child("Messages").child('').update({
+      // 'to': to,
+      'message': message,
+      // 'time': time,
+      'timestamp': ServerValue.timestamp,
+    });
+  }
+    Future<void> addChat(
+      String uid, String to, String time) async {
+    await _database.child('chats').child("From :${dataClass.user.uid}").child("To: $uid").set({
+      'to': to,
+      'message': 'Created',
+      'time': time,
       'timestamp': ServerValue.timestamp,
     });
   }

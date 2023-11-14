@@ -33,51 +33,24 @@ class _ParticipateTileState extends State<ParticipateTile> {
         // String message = 'Hello, how are you?';
         print("Uid:$uid\nName:$participant");
         // Create a new chat and add it to the Realtime Database
-        await dataClass.jFirebaseDatabaseService.addChat(uid, participant);
+        // await dataClass.jFirebaseDatabaseService.addChat(
+        //     uid,
+        //     dataClass.user.uid.toString(),
+        //     participant,
+        //     DateTime.now().toString());
         print("Clicked ParticipateTile List Tile");
         dataClass.fParticipant = participant;
-        // Navigator.pushNamed(context, RouteNames.inbox);
-        // Navigator.pushNamed(
-        //   context,
-        //   RouteNames.inbox,
-        //   arguments: context,
-        // );
-        print('${dataClass.jkIndex},${widget.index}');
         dataClass.jkIndex = widget.index;
-
-        print('${dataClass.jkIndex},${widget.index}');
-        print("152364");
         setState(() {
-          print('${dataClass.jkIndex},${widget.index}');
-          // for (var name in userList) {
-          // uid = dataClass.fUid;
-          // dataClass.fParticipant = participant;
-          // for (var v = 0; v < userList.length; v++) {
-          //   if (userList[v].name == participant) {
-          //     dataClass.jkIndex = v;
-          print(dataClass.jkIndex);
           print(dataClass.fParticipant);
+          // dataClass.checkIfChildExists(childId, uid, participant, to, time, message);
           print('----------------');
-          //     print("USERLIST : ${userList[v].name}");
-          //   }
-          //   // print("NAME: ${name.name}");
-          //   // }
-          // }
         });
-        // Assuming player.uid is a unique identifier for each user
-        String currentUserId = uid; // Replace with the actual current user's ID
-        // String participantUserId =
-        //     participant; // The ID of the participant in the chat
-
-        // Navigate to the chat screen with the required data
+        dataClass.checkIfChildExists(
+            uid, participant, DateTime.now().toString(), "Created");
         Navigator.pushNamed(
           context,
           RouteNames.inbox,
-          arguments: {
-            'currentUserId': currentUserId,
-            'participantName': participant,
-            // Add more data if needed
-          },
         );
       },
       contentPadding: EdgeInsets.zero,

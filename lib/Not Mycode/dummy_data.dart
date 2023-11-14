@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:not_whatsapp/My%20Code/AddProfile_Page.dart';
 import 'package:not_whatsapp/My%20Code/firebase_chat_model.dart';
 import 'package:not_whatsapp/Not%20Mycode/call_log_model.dart';
@@ -12,8 +11,8 @@ import 'package:not_whatsapp/main.dart';
 // FirebaseFirestore firebaseStore = FirebaseFirestore.instance.collection("Users");
 // final selectAUser = dataClass.inboxInstance;
 const Inbox inb = Inbox();
-CollectionReference usersCollection = FirebaseFirestore.instance.collection('Users');
-CollectionReference chatsCollection = FirebaseFirestore.instance.collection('Chats');
+// CollectionReference usersCollection = FirebaseFirestore.instance.collection('Users');
+// CollectionReference chatsCollection = FirebaseFirestore.instance.collection('Chats');
 
 
 class KDummyData {
@@ -38,65 +37,11 @@ class KDummyData {
       status: "",
       contact: "",
       messages: <Messages>[
-        Messages(
-          uid: 1,
-          message: "Hi",
-          sender: "participantQ",
-          reciever: "",
-          date: DateTime.now(),
-          seen: true,
-          delivered: true,
-          sent: true,
-        ),
         // Messages(
-        //   uid: 2,
-        //   message: "Hello",
-        //   sender: "user",
-        //   date: DateTime.now(),
-        //   seen: true,
-        //   delivered: true,
-        //   sent: true,
-        // ),
-        // Messages(
-        //   uid: 3,
-        //   message: "How are you?",
-        //   sender: "user",
-        //   date: DateTime.now(),
-        //   seen: true,
-        //   delivered: true,
-        //   sent: true,
-        // ),
-        // Messages(
-        //   uid: 4,
-        //   message: "I'm absolutely fine, what about you?",
-        //   sender: "participantQ",
-        //   date: DateTime.now(),
-        //   seen: true,
-        //   delivered: true,
-        //   sent: true,
-        // ),
-        // Messages(
-        //   uid: 5,
-        //   message: "Everything is going well",
-        //   sender: "user",
-        //   date: DateTime.now(),
-        //   seen: true,
-        //   delivered: true,
-        //   sent: true,
-        // ),
-        // Messages(
-        //   uid: 6,
-        //   message: "Have you done your assignments?",
-        //   sender: "participantQ",
-        //   date: DateTime.now(),
-        //   seen: true,
-        //   delivered: true,
-        //   sent: true,
-        // ),
-        // Messages(
-        //   uid: 7,
-        //   message: "No! not yet",
-        //   sender: "user",
+        //   uid: 0,
+        //   message: "bruh",
+        //   sender: dataClass.user.uid.toString(),
+        //   reciever: userList[dataClass.jkIndex].uid.toString(),
         //   date: DateTime.now(),
         //   seen: true,
         //   delivered: true,
