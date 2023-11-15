@@ -3,6 +3,7 @@
 
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
     <uses-permission android:name="android.permission.INTERNET" />
+   
 
     <application
         android:label="not_whatsapp"
@@ -42,3 +43,4 @@
             android:value="2" />
     </application>
 </manifest>
+
