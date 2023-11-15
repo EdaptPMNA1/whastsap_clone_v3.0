@@ -45,10 +45,7 @@ class _myChatScreenState extends State<myChatScreen> {
             ),
             itemBuilder: (context) {
               return [
-                // const PopupMenuItem(child: Text('New Group')),
-                // const PopupMenuItem(child: Text('New Broadcast')),
-                // const PopupMenuItem(child: Text('Linked Devices')),
-                // const PopupMenuItem(child: Text('Starred Messages')),
+               
                 const PopupMenuItem(child: Text('Settings')),
               ];
             },
@@ -59,7 +56,7 @@ class _myChatScreenState extends State<myChatScreen> {
             IconButton(
                 splashRadius: 30,
                 alignment: Alignment.center,
-                // padding: EdgeInsets.all(1),
+               
                 onPressed: () {
                   Navigator.pop(context);
                 },
@@ -228,15 +225,7 @@ class ChatScreenState extends State<ChatScreen> {
                 icon: const Icon(Icons.send)),
             backgroundColor: themeColorGreen,
           ),
-          // FloatingActionButton(
-          //   onPressed: () {},
-          //   child: IconButton(
-          //       onPressed: () {
-          //         // voice recorder function
-          //       },
-          //       icon: Icon(Icons.keyboard_voice)),
-          //   backgroundColor: themeColorGreen,
-          // ),
+        
         ],
       ),
     );
@@ -325,7 +314,7 @@ class ChatScreenState extends State<ChatScreen> {
           ),
           onTap: () {
             print('Profile');
-            // ignore: avoid_types_as_parameter_names
+            
             Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -351,9 +340,7 @@ class ChatScreenState extends State<ChatScreen> {
   }
 }
 
-// Show(bool isHintTextVisible) {
-//   print(isHintTextVisible);
-// }
+
 
 class ChatMessage extends StatelessWidget {
   const ChatMessage({super.key, required this.text});

@@ -67,10 +67,15 @@ class ContactPage extends StatelessWidget {
               title: "New call link",
             ),
             Utils.verticalSpace(20),
-            NewOption(
-              icon: Icons.group,
-              title: "New group call",
-            ),
+ElevatedButton.icon(onPressed: (){}, icon: Icon(Icons.group), label: Text('New group')),
+
+            
+            // NewOption(
+
+              
+            //   icon: Icons.group,
+            //   title: "New group call",
+            // ),
             Utils.verticalSpace(20),
             NewOption(
               icon: Icons.person_add,
