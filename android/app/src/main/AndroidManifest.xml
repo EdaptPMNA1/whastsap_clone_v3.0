@@ -7,7 +7,7 @@
 
     <application
         android:label="not_whatsapp"
-        android:name="NotWhatapp"
+        android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
 
         <!-- Firebase Authentication requirements -->

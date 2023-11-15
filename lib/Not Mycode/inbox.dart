@@ -54,6 +54,7 @@ class _InboxState extends State<Inbox> {
       if (userList[l].name == dataClass.fParticipant) {
         dataClass.fAppBarName = userList[l];
         dataClass.jkIndex = l;
+        dataClass.fUid = userList[l].uid;
         print("\n");
         print(dataClass.fAppBarName.name);
         // selectedUser = dataClass.fAppBarName;

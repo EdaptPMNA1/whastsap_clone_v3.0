@@ -46,8 +46,8 @@ class _ParticipateTileState extends State<ParticipateTile> {
           // dataClass.checkIfChildExists(childId, uid, participant, to, time, message);
           print('----------------');
         });
-        dataClass.checkIfChildExists(
-            uid, participant, DateTime.now().toString(), "Created");
+        // dataClass.checkIfChildExists(
+        //     uid, participant, DateTime.now().toString(), "Created");
         Navigator.pushNamed(
           context,
           RouteNames.inbox,

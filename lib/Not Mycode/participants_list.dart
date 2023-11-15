@@ -1,5 +1,6 @@
 import 'dart:async';
 
+// import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:not_whatsapp/My%20Code/AddProfile_Page.dart';
@@ -100,20 +101,39 @@ class FirebaseDatabaseService {
 
   Future<void> updateChat(
       String uid, String to, String time, String message) async {
-    await _database.child('chats').child("From :${dataClass.user.uid}").child("To: $uid").child("Messages").child('').update({
-      // 'to': to,
-      'message': message,
-      // 'time': time,
-      'timestamp': ServerValue.timestamp,
-    });
-  }
-    Future<void> addChat(
-      String uid, String to, String time) async {
-    await _database.child('chats').child("From :${dataClass.user.uid}").child("To: $uid").set({
+    await _database.child('chats').child("From :${dataClass.user.uid}").child("To: ${dataClass.fUid}").child("Messages").set({
       'to': to,
-      'message': 'Created',
+      'message': message,
       'time': time,
       'timestamp': ServerValue.timestamp,
     });
   }
+  
+// Query rQuery = FirebaseDatabase.instance.ref()
+//     .child('chats')
+//     .child("From :${dataClass.user.uid}")
+//     .child("To: ${dataClass.fUid}")
+//     .child("Messages")
+//     .orderByChild('timestamp');
+
+
+  
+  //   Future<void> addChat(
+  //     String uid, String to, String time) async {
+  //   await _database.child('chats').child("From :${dataClass.user.uid}").child("To: $uid").set({
+  //     'to': to,
+  //     'message': 'Created',
+  //     'time': time,
+  //     'timestamp': ServerValue.timestamp,
+  //   });
+  // }
+  // Future<void> addMessage(
+  //     String uid, String to, String time) async {
+  //   await _database.child('chats').child("From :${dataClass.user.uid}").child("To: $uid").push().set({
+  //     'to': to,
+  //     'message':message,
+  //     'time': time,
+  //     'timestamp': ServerValue.timestamp,
+  //   });
+  // }
 }

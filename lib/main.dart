@@ -12,8 +12,10 @@ import 'package:firebase_core/firebase_core.dart';
 // import 'My Code/Login_Page.dart';
 
 var themeColorGreen = const Color.fromARGB(255, 9, 110, 81);
+FirebaseDatabaseService firebaseDatabaseService = FirebaseDatabaseService();
+
 final firebaseGetData = ConversationListTiles();
-final dataClass = DataClass();
+final dataClass = DataClass(firebaseDatabaseService);
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

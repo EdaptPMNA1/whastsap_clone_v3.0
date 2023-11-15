@@ -9,8 +9,9 @@ import 'package:not_whatsapp/Not%20Mycode/participants_list.dart';
 import 'package:not_whatsapp/main.dart';
 
 class DataClass {
-  final FirebaseDatabaseService jFirebaseDatabaseService =
-      FirebaseDatabaseService();
+  final FirebaseDatabaseService jFirebaseDatabaseService;
+
+  DataClass(this.jFirebaseDatabaseService);
   final addProfileInstance = AddProfile();
   final CollectionReference users =
       FirebaseFirestore.instance.collection('Users');
@@ -31,17 +32,27 @@ class DataClass {
         .child("To:$to");
   }
 
-  void checkIfChildExists(String uid , String to, String time, String message) {
+  void checkIfChildExists(String uid, String to, String time, String message) {
     // DatabaseReference childReference = getChatReference(to);
-    DatabaseReference childRef = getChatReference(to);
-
-    if (childRef == null) {
-      print("Child does not exist: $to");
-      jFirebaseDatabaseService.addChat(uid, to, time);
-    } else {
-      print("Child exists: $to");
+    // DatabaseReference childRef = getChatReference(to);
+    
       jFirebaseDatabaseService.updateChat(uid, to, time, message);
-    }
+
+    // if (childRef == null) {
+    //   print("Child does not exist: $to");
+    //   jFirebaseDatabaseService.addChat(uid, to, time);
+    // } else {
+    //   print("Child exists: $to");
+    //   jFirebaseDatabaseService.updateChat(uid, to, time, message);
+    // }
+
+    // if (childRef.once() == null) {
+    //   print("Child does not exist: $to");
+    //   jFirebaseDatabaseService.addChat(uid, to, time);
+    // } else {
+    //   print("Child exists: $to");
+    //   jFirebaseDatabaseService.updateChat(uid, to, time, message);
+    // }
 
     // Check if the child exists
     // childReference.once().then((DataSnapshot snapshot) {
