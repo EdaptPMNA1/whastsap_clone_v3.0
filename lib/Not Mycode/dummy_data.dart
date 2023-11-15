@@ -1,97 +1,21 @@
+import 'package:not_whatsapp/My%20Code/AddProfile_Page.dart';
+import 'package:not_whatsapp/My%20Code/firebase_chat_model.dart';
 import 'package:not_whatsapp/Not%20Mycode/call_log_model.dart';
 import 'package:not_whatsapp/Not%20Mycode/channel_news_model.dart';
-import 'package:not_whatsapp/Not%20Mycode/chats_model.dart';
+import 'package:not_whatsapp/Not%20Mycode/inbox.dart';
+// import 'package:not_whatsapp/Not%20Mycode/chats_model.dart';
 import 'package:not_whatsapp/Not%20Mycode/k_images.dart';
 import 'package:not_whatsapp/Not%20Mycode/participants_chat_model.dart';
+import 'package:not_whatsapp/main.dart';
+
+// FirebaseFirestore firebaseStore = FirebaseFirestore.instance.collection("Users");
+// final selectAUser = dataClass.inboxInstance;
+const Inbox inb = Inbox();
+// CollectionReference usersCollection = FirebaseFirestore.instance.collection('Users');
+// CollectionReference chatsCollection = FirebaseFirestore.instance.collection('Chats');
+
 
 class KDummyData {
-  static List<ParticipantQ> chatsList = [
-    ParticipantQ(
-        uid: 1,
-        avatar: KImages.chatAvatar1,
-        name: "Martin Troff",
-        lastMessage: "Let's meet",
-        messageFrom: "user",
-        isImage: false,
-        seen: true,
-        delivered: true,
-        unread: 7,
-        sent: true,
-        date: DateTime.now().toString()),
-    ParticipantQ(
-        uid: 2,
-        avatar: KImages.chatAvatar2,
-        name: "Yes that's correct",
-        lastMessage: "Let's meet",
-        messageFrom: "sender",
-        isImage: false,
-        seen: true,
-        delivered: true,
-        sent: true,
-        unread: 0,
-        date: DateTime.now().toString()),
-    ParticipantQ(
-        uid: 3,
-        avatar: KImages.chatAvatar3,
-        name: "Carla Korsgaard",
-        lastMessage: "How are you today?",
-        messageFrom: "sender",
-        seen: true,
-        delivered: true,
-        sent: true,
-        unread: 0,
-        date: DateTime.now().toString(),
-        isImage: false),
-    ParticipantQ(
-        uid: 4,
-        avatar: KImages.chatAvatar4,
-        name: "Zaire Passaquindici",
-        lastMessage: "Sorry, I couldn't attend your party",
-        messageFrom: "sender",
-        seen: true,
-        delivered: true,
-        sent: true,
-        unread: 3,
-        date: DateTime.now().toString(),
-        isImage: false),
-    ParticipantQ(
-        uid: 5,
-        avatar: KImages.chatAvatar5,
-        name: "Terry Dokuidis",
-        lastMessage: "Hey! are you available?",
-        messageFrom: "user",
-        seen: false,
-        delivered: false,
-        sent: true,
-        unread: 0,
-        date: DateTime.now().toString(),
-        isImage: false),
-    ParticipantQ(
-        uid: 6,
-        avatar: KImages.chatAvatar6,
-        name: "Philip Westervelt",
-        lastMessage: "That's right",
-        messageFrom: "sender",
-        seen: true,
-        delivered: true,
-        sent: true,
-        unread: 0,
-        date: DateTime.now().toString(),
-        isImage: false),
-    ParticipantQ(
-        uid: 7,
-        avatar: KImages.chatAvatar7,
-        name: "Alfanso Rhifel",
-        lastMessage: "Could you please fix this?",
-        messageFrom: "sender",
-        seen: true,
-        delivered: true,
-        sent: true,
-        unread: 0,
-        date: DateTime.now().toString(),
-        isImage: false),
-  ];
-
   static List<Map<String, String>> storyList = [
     {
       "user": "Martin Luther",
@@ -106,78 +30,24 @@ class KDummyData {
       "avatar": KImages.chatAvatar6,
     }
   ];
-
   static ParticipantQsChat participantQsChat = ParticipantQsChat(
-      uid: 1,
-      participant: "Martin Luther",
-      avatar: KImages.chatAvatar1,
-      status: "Online",
-      contact: "01712312312",
+      uid: userList[dataClass.jkIndex].uid,
+      participant: userList[dataClass.jkIndex].name,
+      // avatar: KImages.chatAvatar1,
+      status: "",
+      contact: "",
       messages: <Messages>[
-        Messages(
-          uid: 1,
-          message: "Hi",
-          sender: "participantQ",
-          date: DateTime.now(),
-          seen: true,
-          delivered: true,
-          sent: true,
-        ),
-        Messages(
-          uid: 2,
-          message: "Hello",
-          sender: "user",
-          date: DateTime.now(),
-          seen: true,
-          delivered: true,
-          sent: true,
-        ),
-        Messages(
-          uid: 3,
-          message: "How are you?",
-          sender: "user",
-          date: DateTime.now(),
-          seen: true,
-          delivered: true,
-          sent: true,
-        ),
-        Messages(
-          uid: 4,
-          message: "I'm absolutely fine, what about you?",
-          sender: "participantQ",
-          date: DateTime.now(),
-          seen: true,
-          delivered: true,
-          sent: true,
-        ),
-        Messages(
-          uid: 5,
-          message: "Everything is going well",
-          sender: "user",
-          date: DateTime.now(),
-          seen: true,
-          delivered: true,
-          sent: true,
-        ),
-        Messages(
-          uid: 6,
-          message: "Have you done your assignments?",
-          sender: "participantQ",
-          date: DateTime.now(),
-          seen: true,
-          delivered: true,
-          sent: true,
-        ),
-        Messages(
-          uid: 7,
-          message: "No! not yet",
-          sender: "user",
-          date: DateTime.now(),
-          seen: true,
-          delivered: true,
-          sent: true,
-        ),
-      ]);
+        // Messages(
+        //   uid: 0,
+        //   message: "bruh",
+        //   sender: dataClass.user.uid.toString(),
+        //   reciever: userList[dataClass.jkIndex].uid.toString(),
+        //   date: DateTime.now(),
+        //   seen: true,
+        //   delivered: true,
+        //   sent: true,
+        // ),
+      ],);
 
   static List<ChannelNews> channelNews = [
     ChannelNews(

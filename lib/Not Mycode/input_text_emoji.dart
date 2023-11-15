@@ -61,19 +61,21 @@ class _TextEmojiInputFieldState extends State<TextEmojiInputField> {
                           cursorWidth: 3,
                           controller: controller,
                           onChanged: (v) {
-                            if (v.length > 0 && isTyping == false) {
-                              isTyping = true;
-                              setState(() {});
-                            } else if (v.length == 0 && isTyping == true) {
-                              isTyping = false;
-                              setState(() {});
+                            if (v.isNotEmpty && isTyping == false) {
+                              setState(() {
+                                isTyping = true;
+                              });
+                            } else if (v.isEmpty && isTyping == true) {
+                              setState(() {
+                                isTyping = false;
+                              });
                             }
                           },
                           onTap: () {
                             if (mounted) {
                               setState(() {
                                 if (enableEmoji) {
-                                  enableEmoji = false;
+                                  enableEmoji = true;
                                 }
                               });
                             }
@@ -90,10 +92,13 @@ class _TextEmojiInputFieldState extends State<TextEmojiInputField> {
                           ))),
                   RotatedBox(
                     quarterTurns: 100,
-                    child: Icon(
-                      Icons.attach_file,
+                    child: IconButton(
+                      onPressed: () {
+                        
+                      },
+                      icon: Icon(Icons.attach_file),
                       color: subTitleTextColor,
-                      size: 30,
+                      iconSize: 30,
                     ),
                   ),
                   Utils.horizontalSpace(16),

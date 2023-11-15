@@ -1,8 +1,8 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:not_whatsapp/My%20Code/AddProfile_Page.dart';
+import 'package:not_whatsapp/My%20Code/firebase_chat_model.dart';
 import 'package:not_whatsapp/Not%20Mycode/appbar_component.dart';
 import 'package:not_whatsapp/Not%20Mycode/constants.dart';
 import 'package:not_whatsapp/Not%20Mycode/dummy_data.dart';
@@ -14,18 +14,59 @@ import 'package:not_whatsapp/Not%20Mycode/message_item.dart';
 import 'package:not_whatsapp/Not%20Mycode/participants_chat_model.dart';
 import 'package:not_whatsapp/Not%20Mycode/utils.dart';
 import 'package:grouped_list/grouped_list.dart';
+import 'package:not_whatsapp/main.dart';
+
 class Inbox extends StatefulWidget {
-  const Inbox({super.key});
+  const Inbox({Key? key}) : super(key: key);
+  //   const Inbox({Key? key, required this.uid}) : super(key: key);
+
+  // final String uid;
 
   @override
   State<Inbox> createState() => _InboxState();
 }
 
 class _InboxState extends State<Inbox> {
+  late ParticipantQsChat selectedUser = KDummyData.participantQsChat;
+  // late FirebaseChat selectedUser;
+  // late ParticipantQsChat selectedUser;
+  // late List<Map<String, dynamic>> selectedUser = dataClass.firebaseData[]['Name'];
+  // String? selectedUserName = dataClass.firebaseData.isNotEmpty
+  //   ? dataClass.firebaseData[0]['Name']
+  //   : null;
+// dynamic specificData = firebaseData.isNotEmpty ? firebaseData[0]['fieldName'] : null;
+
+  // void selectUser(FirebaseChat user) {
+  //   setState(() {
+  //     selectedUser = user;
+  //   });
+  // }
+
+  @override
+  void initState() {
+    super.initState();
+    for (var l = 0; l < userList.length; l++) {
+      // for (var item in userList) {
+      // print(l);
+      // print(userList[l].uid);
+      // print(userList[l].name);
+      // print(dataClass.fParticipant);
+      if (userList[l].name == dataClass.fParticipant) {
+        dataClass.fAppBarName = userList[l];
+        dataClass.jkIndex = l;
+        dataClass.fUid = userList[l].uid;
+        print("\n");
+        print(dataClass.fAppBarName.name);
+        // selectedUser = dataClass.fAppBarName;
+      }
+      // print(selectedUser);
+    }
+    // }
+  }
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    final user = KDummyData.participantQsChat;
 
     return WillPopScope(
       onWillPop: () async {
@@ -33,7 +74,7 @@ class _InboxState extends State<Inbox> {
         return true;
       },
       child: Scaffold(
-        appBar: _buildAppBar(user),
+        appBar: _buildAppBar(dataClass.fAppBarName),
         body: Container(
           height: size.height,
           width: size.width,
@@ -49,7 +90,6 @@ class _InboxState extends State<Inbox> {
                         return GroupedListView<Messages, DateTime>(
                           padding: const EdgeInsets.all(0),
                           elements: messageList,
-                          // controller: controller,
                           groupBy: (element) => DateTime(
                             element.date.year,
                             element.date.month,
@@ -57,18 +97,13 @@ class _InboxState extends State<Inbox> {
                           ),
                           groupSeparatorBuilder: (DateTime groupByValue) =>
                               MessageSeparator(groupByValue: groupByValue),
-
                           itemBuilder: (context, Messages element) =>
                               MessageComponent(element: element),
-
                           itemComparator: (item1, item2) =>
                               item1.date.compareTo(item2.date),
-                          // optional
                           useStickyGroupSeparators: false,
-                          // optional
                           floatingHeader: true,
-                          // optional
-                          order: GroupedListOrder.ASC, // optional
+                          order: GroupedListOrder.ASC,
                         );
                       }
                       return const SizedBox();
@@ -83,7 +118,7 @@ class _InboxState extends State<Inbox> {
     );
   }
 
-  AppBar _buildAppBar(ParticipantQsChat user) {
+  AppBar _buildAppBar(FireBaseUserQ user) {
     return AppBar(
       backgroundColor: primaryColor,
       leadingWidth: 70.w,
@@ -112,33 +147,3 @@ class _InboxState extends State<Inbox> {
     );
   }
 }
-
-
-// Future<void> _sentMessage() async {
-//   QuerySnapshot querySnapshot = await users.get();
-//     querySnapshot.docs.forEach((doc) {
-//       ParticipantQsChat user = ParticipantQsChat(
-//           uid: doc['Uuid'],
-//           bio: doc['Bio'],
-//           name: doc['Name'],
-//           phoneNumber: doc['Phno'],
-//           avatar: '',
-//           messages:,
-//           messageFrom: 'Someone',
-//           lastMessage: '',
-//           isImage: false,
-//           sent: false,
-//           delivered: false,
-//           unread: 0,
-//           seen: true,
-//           date: DateTime.now().toString());
-
-//       // Check if the user already exists in the list based on the user id
-//       if (!userList.any((element) => element.uid == user.uid)) {
-//         setState(() {
-//           userList.add(user);
-//           print('\n\n\nDetails Saved\n\n\n');
-//         });
-//       }
-//     });
-// }

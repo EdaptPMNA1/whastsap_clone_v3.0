@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:not_whatsapp/My%20Code/firebase_options.dart';
 import 'package:not_whatsapp/Not%20Mycode/custom_theme.dart';
+import 'package:not_whatsapp/Not%20Mycode/data_assigning.dart';
+import 'package:not_whatsapp/Not%20Mycode/participants_list.dart';
 import 'package:not_whatsapp/Not%20Mycode/routes_name.dart';
 import 'package:not_whatsapp/Not%20Mycode/strings.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -10,6 +12,10 @@ import 'package:firebase_core/firebase_core.dart';
 // import 'My Code/Login_Page.dart';
 
 var themeColorGreen = const Color.fromARGB(255, 9, 110, 81);
+FirebaseDatabaseService firebaseDatabaseService = FirebaseDatabaseService();
+
+final firebaseGetData = ConversationListTiles();
+final dataClass = DataClass(firebaseDatabaseService);
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

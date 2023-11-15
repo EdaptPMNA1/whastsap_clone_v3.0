@@ -1,12 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:not_whatsapp/My%20Code/AddProfile_Page.dart';
 import 'package:not_whatsapp/Not%20Mycode/k_images.dart';
+import 'package:not_whatsapp/main.dart';
 import 'routes_name.dart';
 import 'utils.dart';
-import 'package:not_whatsapp/My Code/AddProfile_Page.dart';
 
-const addProfileInstance = AddProfile();
-
+//Splash Screen With Green Whatsapp Logo for 2 sec
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
@@ -14,19 +14,31 @@ class SplashScreen extends StatefulWidget {
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
+
 class _SplashScreenState extends State<SplashScreen> {
-  final CollectionReference users =
-      FirebaseFirestore.instance.collection('Users');
   @override
   void initState() {
     Future.delayed(Duration(seconds: 2)).then(
         (value) => Navigator.popAndPushNamed(context, RouteNames.mainScreen));
     super.initState();
     getAllUsersQ();
+    retrieveDataFromFirebase();
   }
 
+  void retrieveDataFromFirebase() async {
+    QuerySnapshot querySnapshot = await dataClass.users.get();
+
+    List<Map<String, dynamic>> data = [];
+    querySnapshot.docs.forEach((doc) {
+      data.add(doc.data() as Map<String, dynamic>);
+    });
+
+    setState(() {
+      dataClass.firebaseData = data;
+    });
+  }
   void getAllUsersQ() async {
-    QuerySnapshot querySnapshot = await users.get();
+    QuerySnapshot querySnapshot = await dataClass.users.get();
     querySnapshot.docs.forEach((doc) {
       FireBaseUserQ user = FireBaseUserQ(
           uid: doc['Uuid'],
