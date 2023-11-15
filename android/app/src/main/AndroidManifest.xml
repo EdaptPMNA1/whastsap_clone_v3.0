@@ -3,11 +3,11 @@
 
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
     <uses-permission android:name="android.permission.INTERNET" />
-   
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application
         android:label="not_whatsapp"
-        android:name="${applicationName}"
+        android:name="NotWhatapp"
         android:icon="@mipmap/ic_launcher">
 
         <!-- Firebase Authentication requirements -->
