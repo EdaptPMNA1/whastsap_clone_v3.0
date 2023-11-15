@@ -16,7 +16,6 @@ class ConversationListTiles extends StatefulWidget {
   State<ConversationListTiles> createState() => _ConversationListTilesState();
 }
 
-
 class _ConversationListTilesState extends State<ConversationListTiles> {
   // late List<Map<String, dynamic>> firebaseData;
   @override
@@ -101,39 +100,53 @@ class FirebaseDatabaseService {
 
   Future<void> updateChat(
       String uid, String to, String time, String message) async {
-    await _database.child('chats').child("From :${dataClass.user.uid}").child("To: ${dataClass.fUid}").child("Messages").set({
+    await _database
+        .child('chats')
+        .child("From :${dataClass.user.uid}")
+        .child("To: ${dataClass.fUid}")
+        .child("Messages")
+        .child(message)
+        .set({
       'to': to,
       'message': message,
       'time': time,
       'timestamp': ServerValue.timestamp,
     });
+  Query getSortedMessagesQuery() {
+    return _database
+        .child('chats')
+        .child("From :${dataClass.user.uid}")
+        .child("To: ${dataClass.fUid}")
+        .child("Messages")
+        .orderByChild('timestamp');
+        
   }
-  
+
+
 // Query rQuery = FirebaseDatabase.instance.ref()
 //     .child('chats')
 //     .child("From :${dataClass.user.uid}")
 //     .child("To: ${dataClass.fUid}")
 //     .child("Messages")
-//     .orderByChild('timestamp');
+//     .orderByChild(message);
 
-
-  
-  //   Future<void> addChat(
-  //     String uid, String to, String time) async {
-  //   await _database.child('chats').child("From :${dataClass.user.uid}").child("To: $uid").set({
-  //     'to': to,
-  //     'message': 'Created',
-  //     'time': time,
-  //     'timestamp': ServerValue.timestamp,
-  //   });
-  // }
-  // Future<void> addMessage(
-  //     String uid, String to, String time) async {
-  //   await _database.child('chats').child("From :${dataClass.user.uid}").child("To: $uid").push().set({
-  //     'to': to,
-  //     'message':message,
-  //     'time': time,
-  //     'timestamp': ServerValue.timestamp,
-  //   });
-  // }
+    //   Future<void> addChat(
+    //     String uid, String to, String time) async {
+    //   await _database.child('chats').child("From :${dataClass.user.uid}").child("To: $uid").set({
+    //     'to': to,
+    //     'message': 'Created',
+    //     'time': time,
+    //     'timestamp': ServerValue.timestamp,
+    //   });
+    // }
+    // Future<void> addMessage(
+    //     String uid, String to, String time) async {
+    //   await _database.child('chats').child("From :${dataClass.user.uid}").child("To: $uid").push().set({
+    //     'to': to,
+    //     'message':message,
+    //     'time': time,
+    //     'timestamp': ServerValue.timestamp,
+    //   });
+    // }
+  }
 }
